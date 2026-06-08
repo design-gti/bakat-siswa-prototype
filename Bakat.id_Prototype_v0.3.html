@@ -1094,37 +1094,56 @@ section[id^="sec-"]{scroll-margin-top:20px}
             <div style="font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.3px">Ikigai Synthesis</div>
             <div style="font-size:12px;color:var(--txt3)">Klik zona diagram untuk detail</div>
           </div>
-          <svg viewBox="0 0 620 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto" font-family="Inter,system-ui,sans-serif">
-            <circle id="ik-love" cx="204" cy="202" r="172" fill="#C8DEFA" fill-opacity=".55" stroke="#1B6FAD" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('love')"/>
-            <circle id="ik-good" cx="416" cy="202" r="172" fill="#DDD5FF" fill-opacity=".55" stroke="#6D3EAD" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('good')"/>
-            <circle id="ik-need" cx="204" cy="358" r="172" fill="#BBE8D8" fill-opacity=".55" stroke="#0F6E56" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('need')"/>
-            <circle id="ik-paid" cx="416" cy="358" r="172" fill="#FAE4B2" fill-opacity=".55" stroke="#C99A00" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('paid')"/>
-            <circle cx="310" cy="280" r="58" fill="white" fill-opacity=".9" stroke="#1B6FAD" stroke-width="2" stroke-dasharray="5 3" style="cursor:pointer" onclick="ikClick('center')"/>
-            <text x="122" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1B3F6A" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU SUKA</text>
-            <text x="122" y="115" text-anchor="middle" font-size="11.5" fill="#1B6FAD" font-weight="600" style="pointer-events:none">Investigatif</text>
-            <text x="122" y="132" text-anchor="middle" font-size="11.5" fill="#1B6FAD" font-weight="600" style="pointer-events:none">Memecahkan masalah</text>
-            <text x="122" y="149" text-anchor="middle" font-size="11.5" fill="#1B6FAD" font-weight="600" style="pointer-events:none">Pola &amp; abstraksi</text>
-            <text x="498" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#4A1E8C" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU BISA</text>
-            <text x="498" y="115" text-anchor="middle" font-size="11.5" fill="#6D3EAD" font-weight="600" style="pointer-events:none">IQ 115 (Bright Normal)</text>
-            <text x="498" y="132" text-anchor="middle" font-size="11.5" fill="#6D3EAD" font-weight="600" style="pointer-events:none">Abstraksi tinggi</text>
-            <text x="498" y="149" text-anchor="middle" font-size="11.5" fill="#6D3EAD" font-weight="600" style="pointer-events:none">Learning Agility 88</text>
-            <text x="122" y="415" text-anchor="middle" font-size="9" font-weight="800" fill="#0A4A38" letter-spacing="1.2" style="pointer-events:none">DUNIA BUTUHKAN</text>
-            <text x="122" y="434" text-anchor="middle" font-size="11.5" fill="#0F6E56" font-weight="600" style="pointer-events:none">Teknologi &amp; AI</text>
-            <text x="122" y="451" text-anchor="middle" font-size="11.5" fill="#0F6E56" font-weight="600" style="pointer-events:none">Transformasi digital Indonesia</text>
-            <text x="498" y="415" text-anchor="middle" font-size="9" font-weight="800" fill="#8A6500" letter-spacing="1.2" style="pointer-events:none">BISA DIBAYAR</text>
-            <text x="498" y="434" text-anchor="middle" font-size="11.5" fill="#C99A00" font-weight="600" style="pointer-events:none">Gaji IT tertinggi</text>
-            <text x="498" y="451" text-anchor="middle" font-size="11.5" fill="#C99A00" font-weight="600" style="pointer-events:none">Demand &amp; pertumbuhan tinggi</text>
-            <text x="310" y="136" text-anchor="middle" font-size="11" font-weight="800" fill="#2A1060" letter-spacing=".5" style="pointer-events:none">PASSION</text>
-            <text x="310" y="151" text-anchor="middle" font-size="10" fill="#2A1060" style="pointer-events:none">Suka &amp; berbakat</text>
-            <text x="468" y="280" text-anchor="middle" font-size="11" font-weight="800" fill="#7A4400" style="pointer-events:none">PROFESI</text>
-            <text x="468" y="295" text-anchor="middle" font-size="10" fill="#7A4400" style="pointer-events:none">Bisa &amp; dibayar</text>
-            <text x="310" y="414" text-anchor="middle" font-size="11" font-weight="800" fill="#0A4A38" style="pointer-events:none">VOKASI</text>
-            <text x="310" y="429" text-anchor="middle" font-size="10" fill="#0A4A38" style="pointer-events:none">Perlu &amp; dibayar</text>
-            <text x="152" y="280" text-anchor="middle" font-size="11" font-weight="800" fill="#0A3560" style="pointer-events:none">MISI</text>
-            <text x="152" y="295" text-anchor="middle" font-size="10" fill="#0A3560" style="pointer-events:none">Suka &amp; diperlukan</text>
-            <text x="310" y="263" text-anchor="middle" font-size="14" font-weight="800" fill="#1B3F6A" letter-spacing=".5" style="pointer-events:none">✦ IKIGAI</text>
-            <text x="310" y="281" text-anchor="middle" font-size="10.5" fill="#1B6FAD" font-weight="700" style="pointer-events:none">Teknik Informatika</text>
-            <text x="310" y="300" text-anchor="middle" font-size="18" font-weight="800" fill="#1B6FAD" style="pointer-events:none">87%</text>
+          <!-- circles: cx 210/450, cy 200/370, r=170 → center=(330,285)
+               private-area text at x=150/510 (inset 80px from each cx extremity)
+               all text positions verified to be inside their respective circles -->
+          <svg viewBox="0 0 660 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto" font-family="Inter,system-ui,sans-serif">
+            <!-- four circles -->
+            <circle id="ik-love" cx="210" cy="200" r="170" fill="#C8DEFA" fill-opacity=".55" stroke="#1B6FAD" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('love')"/>
+            <circle id="ik-good" cx="450" cy="200" r="170" fill="#DDD5FF" fill-opacity=".55" stroke="#6D3EAD" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('good')"/>
+            <circle id="ik-need" cx="210" cy="370" r="170" fill="#BBE8D8" fill-opacity=".55" stroke="#0F6E56" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('need')"/>
+            <circle id="ik-paid" cx="450" cy="370" r="170" fill="#FAE4B2" fill-opacity=".55" stroke="#C99A00" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('paid')"/>
+            <circle cx="330" cy="285" r="58" fill="white" fill-opacity=".9" stroke="#1B6FAD" stroke-width="2" stroke-dasharray="5 3" style="cursor:pointer" onclick="ikClick('center')"/>
+
+            <!-- LOVE — top-left private area (x=150, y=88–141) -->
+            <text x="150" y="88"  text-anchor="middle" font-size="9"    font-weight="800" fill="#1B3F6A" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU SUKA</text>
+            <text x="150" y="108" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1B6FAD" style="pointer-events:none">Investigatif</text>
+            <text x="150" y="125" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1B6FAD" style="pointer-events:none">Analisis &amp; riset</text>
+            <text x="150" y="142" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1B6FAD" style="pointer-events:none">Pola &amp; abstraksi</text>
+
+            <!-- GOOD — top-right private area (x=510, y=88–141) -->
+            <text x="510" y="88"  text-anchor="middle" font-size="9"    font-weight="800" fill="#4A1E8C" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU BISA</text>
+            <text x="510" y="108" text-anchor="middle" font-size="11.5" font-weight="600" fill="#6D3EAD" style="pointer-events:none">IQ 115 · Bright Normal</text>
+            <text x="510" y="125" text-anchor="middle" font-size="11.5" font-weight="600" fill="#6D3EAD" style="pointer-events:none">Abstraksi tinggi</text>
+            <text x="510" y="142" text-anchor="middle" font-size="11.5" font-weight="600" fill="#6D3EAD" style="pointer-events:none">Learning Agility 88</text>
+
+            <!-- NEED — bottom-left private area (x=150, y=438–471) -->
+            <text x="150" y="438" text-anchor="middle" font-size="9"    font-weight="800" fill="#0A4A38" letter-spacing="1.2" style="pointer-events:none">DUNIA BUTUHKAN</text>
+            <text x="150" y="457" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F6E56" style="pointer-events:none">Teknologi &amp; AI</text>
+            <text x="150" y="474" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F6E56" style="pointer-events:none">Transformasi digital</text>
+
+            <!-- PAID — bottom-right private area (x=510, y=438–471) -->
+            <text x="510" y="438" text-anchor="middle" font-size="9"    font-weight="800" fill="#8A6500" letter-spacing="1.2" style="pointer-events:none">BISA DIBAYAR</text>
+            <text x="510" y="457" text-anchor="middle" font-size="11.5" font-weight="600" fill="#C99A00" style="pointer-events:none">Gaji IT tertinggi</text>
+            <text x="510" y="474" text-anchor="middle" font-size="11.5" font-weight="600" fill="#C99A00" style="pointer-events:none">Demand tinggi</text>
+
+            <!-- intersection zone labels -->
+            <text x="330" y="167" text-anchor="middle" font-size="11" font-weight="800" fill="#2A1060" letter-spacing=".5" style="pointer-events:none">PASSION</text>
+            <text x="330" y="182" text-anchor="middle" font-size="10"  fill="#2A1060" style="pointer-events:none">Suka &amp; berbakat</text>
+
+            <text x="174" y="283" text-anchor="middle" font-size="11" font-weight="800" fill="#0A3560" style="pointer-events:none">MISI</text>
+            <text x="174" y="298" text-anchor="middle" font-size="10"  fill="#0A3560" style="pointer-events:none">Suka &amp; diperlukan</text>
+
+            <text x="486" y="283" text-anchor="middle" font-size="11" font-weight="800" fill="#7A4400" style="pointer-events:none">PROFESI</text>
+            <text x="486" y="298" text-anchor="middle" font-size="10"  fill="#7A4400" style="pointer-events:none">Bisa &amp; dibayar</text>
+
+            <text x="330" y="400" text-anchor="middle" font-size="11" font-weight="800" fill="#0A4A38" style="pointer-events:none">VOKASI</text>
+            <text x="330" y="415" text-anchor="middle" font-size="10"  fill="#0A4A38" style="pointer-events:none">Perlu &amp; dibayar</text>
+
+            <!-- center IKIGAI -->
+            <text x="330" y="272" text-anchor="middle" font-size="14" font-weight="800" fill="#1B3F6A" letter-spacing=".5" style="pointer-events:none">✦ IKIGAI</text>
+            <text x="330" y="290" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1B6FAD" style="pointer-events:none">Teknik Informatika</text>
+            <text x="330" y="309" text-anchor="middle" font-size="18"  font-weight="800" fill="#1B6FAD" style="pointer-events:none">87%</text>
           </svg>
           <div id="ik-panel" class="ik-panel" style="margin-top:16px">
             <div style="display:flex;align-items:flex-start;gap:14px">
