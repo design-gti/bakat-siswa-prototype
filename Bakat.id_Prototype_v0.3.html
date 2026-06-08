@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bakat.id Education — Prototype v0.3 (Desktop)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2579C6; --blue-d:#1A3F6E; --blue-m:#5499D4; --blue-l:#EBF4FD; --blue-b:#C8DEF5;
+  --teal:#0F7A61; --teal-l:#E4F7F0;
+  --org:#E0681A; --org-l:#FEF0E4;
+  --red:#C14444; --red-l:#FEECEC;
+  --ylw:#C99A00; --ylw-l:#FEF9E7;
+  --vio:#6D3EAD; --vio-l:#EDE5FF;
+  --bg:#ECF0F7; --sur:#FFFFFF; --brd:#E0E8F0;
+  --txt:#151E2E; --txt2:#526070; --txt3:#8FA3B5;
+  --grad:linear-gradient(140deg,#1A3F6E 0%,#2579C6 100%);
+  --sh:0 2px 8px rgba(21,30,46,.06),0 0 0 1px rgba(21,30,46,.04);
+  --sh2:0 8px 32px rgba(21,30,46,.1),0 2px 8px rgba(21,30,46,.05);
+  --sh3:0 20px 60px rgba(21,30,46,.14),0 4px 12px rgba(21,30,46,.06);
+  --r:12px; --r2:18px; --r3:24px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--txt)}
+
+/* ── SCREEN SWITCHING ── */
+.screen{display:none}
+.screen.active{display:flex;animation:fi .18s ease}
+@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════════════════════
+   ONBOARDING — split layout
+════════════════════════════════════ */
+.split{width:100%;min-height:100vh;display:grid;grid-template-columns:400px 1fr}
+.sp-l{background:var(--grad);display:flex;flex-direction:column;padding:48px 40px;
+  position:sticky;top:0;height:100vh;overflow:hidden}
+.sp-l .logo{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.3px;margin-bottom:auto}
+.sp-l .logo span{color:#7EB5D4}
+.sp-l .hl{font-size:28px;font-weight:800;color:#fff;line-height:1.25;letter-spacing:-.4px;margin-bottom:14px}
+.sp-l .sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:32px}
+.sp-l .pills{display:flex;flex-direction:column;gap:10px}
+.sp-l .pill{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);
+  border-radius:10px;padding:12px 14px;font-size:13px;color:rgba(255,255,255,.85)}
+.sp-l .pill .pi{font-size:20px;flex-shrink:0}
+.sp-l .footnote{font-size:11px;color:rgba(255,255,255,.35);margin-top:auto;padding-top:32px}
+
+.sp-r{background:var(--sur);overflow-y:auto;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:48px 56px}
+.sp-r .form-wrap{width:100%;max-width:440px}
+.sp-r .pg{font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;
+  letter-spacing:.7px;margin-bottom:20px}
+.sp-r .form-title{font-size:26px;font-weight:800;color:var(--txt);letter-spacing:-.4px;margin-bottom:6px}
+.sp-r .form-sub{font-size:14px;color:var(--txt2);margin-bottom:28px;line-height:1.6}
+
+/* ── form components ── */
+.fl{margin-bottom:16px}
+.fl label{display:block;font-size:12px;font-weight:700;color:var(--txt2);
+  text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.fl input,.fl select{width:100%;padding:12px 16px;background:var(--sur);
+  border:1.5px solid var(--brd);border-radius:var(--r);font-family:inherit;
+  font-size:14px;color:var(--txt);transition:border-color .15s}
+.fl input:focus,.fl select:focus{outline:none;border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(27,111,173,.1)}
+.fl-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fl-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.inp-code{font-size:22px;font-weight:800;letter-spacing:5px;text-align:center;text-transform:uppercase}
+.fl-hint{font-size:12px;color:var(--txt3);margin-top:5px}
+
+/* ── buttons ── */
+.btn{display:block;width:100%;padding:13px 20px;font-family:inherit;font-weight:700;
+  font-size:14px;border:none;border-radius:var(--r2);cursor:pointer;
+  text-align:center;transition:all .18s;letter-spacing:-.1px}
+.btn.pri{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(37,121,198,.3)}
+.btn.pri:hover{background:var(--blue-d);box-shadow:0 6px 20px rgba(37,121,198,.4);transform:translateY(-1px)}
+.btn.sec{background:var(--sur);border:1.5px solid var(--brd);color:var(--txt2);box-shadow:var(--sh)}
+.btn.sec:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-l)}
+.btn.ghost{background:transparent;color:var(--blue);font-size:13px;padding:10px;width:auto}
+.btn-row{display:flex;gap:10px;margin-top:4px}
+.btn-row .btn{flex:1}
+
+/* ── divider ── */
+.or{display:flex;align-items:center;gap:12px;margin:18px 0}
+.or::before,.or::after{content:'';flex:1;height:1px;background:var(--brd)}
+.or span{font-size:12px;color:var(--txt3)}
+
+/* ── alert ── */
+.alert{border-radius:var(--r);padding:12px 16px;font-size:13px;line-height:1.5;
+  display:flex;align-items:flex-start;gap:10px;margin-bottom:16px}
+.alert .ai{font-size:16px;flex-shrink:0;margin-top:1px}
+.alert strong{display:block;font-weight:700;margin-bottom:2px}
+.al-ok{background:var(--teal-l);color:var(--teal);border-left:3px solid var(--teal)}
+.al-err{background:var(--red-l);color:var(--red);border-left:3px solid var(--red)}
+.al-warn{background:var(--org-l);color:var(--org);border-left:3px solid var(--org)}
+.al-info{background:var(--blue-l);color:var(--blue);border-left:3px solid var(--blue)}
+
+/* ── data preview grid ── */
+.dp{background:var(--blue-l);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.dp .dp-ttl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--txt2);margin-bottom:10px}
+.dp-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.dp-grid.g3{grid-template-columns:repeat(3,1fr)}
+.dp-cell{background:var(--sur);border-radius:7px;padding:8px 6px;text-align:center}
+.dp-cell .dl{font-size:10px;font-weight:700;color:var(--txt3)}
+.dp-cell .dv{font-size:16px;font-weight:800;color:var(--blue)}
+
+/* ── loading state ── */
+.center-state{display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:60px 0;text-align:center;gap:16px}
+.spin{width:44px;height:44px;border:3px solid var(--blue-b);
+  border-top-color:var(--blue);border-radius:50%;animation:rot .8s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.steps{display:flex;flex-direction:column;gap:8px;text-align:left;width:100%;max-width:380px}
+.step{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:8px;font-size:13px}
+.step .si{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.step.done{background:var(--teal-l);color:var(--teal)}.step.done .si{background:var(--teal);color:#fff}
+.step.doing{background:var(--blue-l);color:var(--blue)}.step.doing .si{background:var(--blue);color:#fff}
+.step.todo{background:var(--bg);color:var(--txt3)}.step.todo .si{background:var(--brd);color:var(--txt3)}
+
+/* ── test screen ── */
+.test-wrap{width:100%;max-width:640px;margin:0 auto}
+.test-q{background:var(--blue-l);border-radius:var(--r2);padding:32px;text-align:center;
+  margin-bottom:20px;min-height:140px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center}
+.test-q .qt{font-size:11px;color:var(--txt2);font-weight:600;margin-bottom:14px}
+.test-q .qb{font-size:34px;font-weight:800;color:var(--blue-d);letter-spacing:10px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.opt{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--sur);
+  border:1.5px solid var(--brd);border-radius:var(--r);cursor:pointer;font-size:13px;
+  transition:all .15s}
+.opt:hover{background:var(--blue-l);border-color:var(--blue)}
+.opt .ol{font-size:11px;font-weight:800;color:var(--blue);background:var(--blue-l);
+  width:26px;height:26px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0}
+
+
+/* ══════════════════════════════════
+   DASHBOARD — top nav + sidebar + main
+════════════════════════════════════ */
+#dash-shell{flex-direction:column;width:100%;min-height:100vh}
+
+.dash-top{height:64px;background:var(--sur);display:flex;align-items:center;
+  padding:0 32px;gap:16px;flex-shrink:0;position:sticky;top:0;z-index:200;
+  border-bottom:1px solid var(--brd);box-shadow:0 1px 0 rgba(21,30,46,.06)}
+.dash-top .dt-logo{font-size:16px;font-weight:800;color:var(--blue-d);letter-spacing:-.4px}
+.dash-top .dt-logo span{color:var(--blue)}
+.dash-top .dt-user{margin-left:auto;display:flex;align-items:center;gap:12px}
+.dash-top .dt-uinfo{text-align:right}
+.dash-top .dt-uname{font-size:13px;font-weight:700;color:var(--txt)}
+.dash-top .dt-usub{font-size:11px;color:var(--txt3)}
+.dash-top .dt-av{width:38px;height:38px;border-radius:50%;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;
+  color:#fff;box-shadow:0 2px 8px rgba(37,121,198,.4)}
+
+.dash-body{display:flex;flex:1;min-height:0}
+
+.dash-side{width:228px;background:var(--sur);border-right:1px solid var(--brd);
+  flex-shrink:0;display:flex;flex-direction:column;padding:20px 12px;
+  position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto}
+.ds-section{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;
+  letter-spacing:.8px;padding:0 10px;margin-bottom:4px;margin-top:18px}
+.ds-section:first-child{margin-top:4px}
+.ds-link{display:flex;align-items:center;gap:10px;padding:9px 12px;font-size:13px;
+  font-weight:500;color:var(--txt2);cursor:pointer;transition:all .15s;
+  border-radius:10px;margin-bottom:2px}
+.ds-link:hover{background:var(--blue-l);color:var(--blue)}
+.ds-link.on{background:var(--blue-l);color:var(--blue);font-weight:700}
+.ds-link.on .di{filter:none}
+.ds-link .di{font-size:16px;flex-shrink:0}
+.ds-foot{margin-top:auto;padding:12px 10px 4px;font-size:11px;color:var(--txt3);
+  border-top:1px solid var(--brd);margin-top:auto}
+
+.dash-main{flex:1;overflow-y:auto;background:var(--bg)}
+.dash-page{display:none;padding:28px 32px 48px}
+.dash-page.on{display:block}
+
+/* ── dash page components ── */
+.pg-hdr{margin-bottom:28px}
+.pg-hdr .ph-ttl{font-size:22px;font-weight:800;color:var(--txt);letter-spacing:-.3px;margin-bottom:4px}
+.pg-hdr .ph-sub{font-size:14px;color:var(--txt2)}
+
+.card{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r2);
+  padding:20px;box-shadow:var(--sh)}
+.card+.card{margin-top:12px}
+.card .c-ttl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--txt3);margin-bottom:12px}
+
+/* grid helpers */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.g13{display:grid;grid-template-columns:1fr 340px;gap:20px}
+.g31{display:grid;grid-template-columns:340px 1fr;gap:20px}
+.g23{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+
+/* stat box */
+.stat{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r2);
+  padding:20px 20px 16px;box-shadow:var(--sh)}
+.stat .sv{font-size:36px;font-weight:800;line-height:1;margin-bottom:4px}
+.stat .sl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--txt2)}
+.stat .sb{display:inline-flex;align-items:center;font-size:11px;font-weight:700;
+  padding:2px 8px;border-radius:20px;margin-top:6px}
+
+/* hero rekom */
+.rk-hero{background:var(--blue-l);border:2px solid var(--blue);border-radius:var(--r2);padding:22px}
+.rk-hero .rh-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.rk-hero .rh-score{font-size:40px;font-weight:800;color:var(--blue);line-height:1}
+.rk-hero .rh-name{font-size:20px;font-weight:800;color:var(--txt);margin-top:2px}
+.rk-hero .rh-sub{font-size:13px;color:var(--txt2);margin-top:3px}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 14px 6px 6px;
+  background:var(--blue-l);border-radius:20px;
+  font-size:12px;font-weight:700;color:var(--blue);cursor:pointer;
+  transition:all .15s;box-shadow:0 1px 3px rgba(37,121,198,.1)}
+.chip:hover{background:var(--blue-b);box-shadow:0 2px 8px rgba(37,121,198,.2);transform:translateY(-1px)}
+.chip .av{width:24px;height:24px;border-radius:50%;font-size:9px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;
+  box-shadow:0 1px 3px rgba(0,0,0,.2)}
+
+/* rekom list */
+.rk-list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
+.rk-item{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r2);
+  padding:18px;cursor:pointer;transition:all .15s}
+.rk-item:hover{border-color:var(--blue);background:var(--blue-l)}
+.rk-item .ri-rank{font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.rk-item .ri-name{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:4px}
+.rk-item .ri-camps{font-size:12px;color:var(--txt2);margin-bottom:12px}
+.rk-item .ri-pct{font-size:28px;font-weight:800;color:var(--blue)}
+
+/* gap bar */
+.gap-row{display:flex;align-items:center;gap:14px;padding:10px 14px;
+  background:var(--sur);border:1px solid var(--brd);border-radius:8px;margin-bottom:7px}
+.gap-row.hi{border-left:3px solid var(--org);background:var(--org-l)}
+.gap-row.ok{border-left:3px solid var(--teal);background:var(--teal-l)}
+.gap-lbl{font-size:12px;font-weight:700;width:40px;color:var(--txt2);flex-shrink:0}
+.gap-lbl.hi{color:var(--org)}.gap-lbl.ok{color:var(--teal)}
+.gap-track{flex:1;height:10px;background:var(--brd);border-radius:5px;overflow:hidden}
+.gap-fill{height:100%;border-radius:5px;transition:width .6s ease}
+.gap-fill.hi{background:var(--org)}.gap-fill.ok{background:var(--teal)}.gap-fill.mid{background:var(--blue)}
+.gap-score{font-size:12px;font-weight:700;color:var(--txt2);width:80px;text-align:right;flex-shrink:0}
+.gap-score.hi{color:var(--org)}.gap-score.ok{color:var(--teal)}
+
+/* psi bar */
+.psi-row{display:flex;align-items:center;gap:14px;margin-bottom:10px;
+  padding:10px 12px;border-radius:10px;transition:background .12s}
+.psi-row:hover{background:var(--bg)}
+.psi-lbl{font-size:13px;color:var(--txt2);width:120px;flex-shrink:0;font-weight:500}
+.psi-track{flex:1;height:10px;background:var(--bg);border-radius:6px;overflow:hidden;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.06)}
+.psi-fill{height:100%;border-radius:6px}
+.psi-score{font-size:13px;font-weight:800;color:var(--blue);width:52px;text-align:right;flex-shrink:0}
+
+/* tabs */
+.tabs{display:flex;background:var(--bg);border-radius:9px;padding:3px;gap:2px;
+  width:fit-content;margin-bottom:20px}
+.tab{padding:7px 20px;border-radius:7px;font-size:13px;font-weight:600;
+  color:var(--txt2);cursor:pointer;transition:all .15s}
+.tab.on{background:var(--sur);color:var(--blue);box-shadow:var(--sh)}
+.tab:hover:not(.on){color:var(--txt)}
+
+/* ikigai */
+.ikigai{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.ik{border-radius:var(--r2);padding:18px;min-height:100px}
+.ik .ik-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;opacity:.7}
+.ik .ik-t{font-size:13px;line-height:1.6;font-weight:500}
+.ik-a{background:var(--blue-l);color:var(--blue-d)}
+.ik-b{background:var(--teal-l);color:#0A5544}
+.ik-c{background:var(--vio-l);color:var(--vio)}
+.ik-d{background:var(--teal-l);color:#0A5544}
+
+/* competitive bar */
+.comp-bar-wrap{margin:14px 0 20px}
+.comp-bar{height:14px;border-radius:7px;
+  background:linear-gradient(90deg,#E8A0A0,#F0D080 40%,#80C8A0 75%,#4DB88A);
+  position:relative}
+.comp-marker{position:absolute;top:-6px;width:4px;height:26px;
+  background:var(--blue-d);border-radius:2px;transform:translateX(-50%)}
+.comp-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--txt3);margin-top:6px}
+
+/* section header */
+.sec-hdr{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding:16px 20px;
+  background:var(--sur);border-radius:var(--r2);border:1px solid var(--brd);box-shadow:var(--sh)}
+.sh-icon{font-size:22px;flex-shrink:0}
+.sh-title{font-size:18px;font-weight:800;color:var(--txt);letter-spacing:-.2px}
+.sh-sub{font-size:13px;color:var(--txt2);margin-top:2px}
+
+/* section divider */
+.sec-divider{height:1px;background:var(--brd);margin:36px 0;position:relative}
+.sec-divider::before{content:'';position:absolute;left:0;top:-1px;width:40px;height:3px;
+  background:var(--blue-m);border-radius:2px}
+
+/* scroll offset for sections so top nav doesn't cover them */
+section[id^="sec-"]{scroll-margin-top:20px}
+
+/* data table */
+.dt{width:100%;border-collapse:collapse}
+.dt td{padding:10px 14px;border-bottom:1px solid var(--brd);font-size:13px}
+.dt td:first-child{color:var(--txt2)}
+.dt td:last-child{font-weight:700;color:var(--txt);text-align:right}
+.dt td.hi{color:var(--blue)}
+.dt tr:last-child td{border-bottom:none}
+
+/* timeline */
+.tl{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:16px;padding-bottom:20px;position:relative}
+.tl-item::before{content:'';position:absolute;left:16px;top:33px;bottom:0;width:2px;background:var(--brd)}
+.tl-item:last-child::before{display:none}
+.tl-dot{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;
+  align-items:center;justify-content:center;font-size:14px;font-weight:800;
+  border:2px solid var(--brd);background:var(--sur);position:relative;z-index:1}
+.tl-body{flex:1;padding-top:5px}
+.tl-title{font-size:14px;font-weight:700;margin-bottom:5px}
+.tl-sub{font-size:13px;color:var(--txt2);line-height:1.7}
+.tl-item.act .tl-dot{background:var(--org);border-color:var(--org);color:#fff}
+.tl-item.fut .tl-dot{background:var(--blue-l);border-color:var(--blue-b);color:var(--blue)}
+.tl-item.done .tl-dot{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* campus detail */
+.camp-hdr{background:var(--grad);border-radius:var(--r2) var(--r2) 0 0;padding:20px 22px;color:#fff}
+.camp-hdr .ch-name{font-size:18px;font-weight:800;margin-bottom:4px;letter-spacing:-.3px}
+.camp-hdr .ch-sub{font-size:12px;color:rgba(255,255,255,.6)}
+.status-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;
+  border-radius:20px;font-size:12px;font-weight:700;margin-top:10px}
+.sp-warn{background:var(--org-l);color:var(--org);border:1.5px solid var(--org)}
+.sp-ok{background:var(--teal-l);color:var(--teal);border:1.5px solid var(--teal)}
+
+/* ── REPORT STYLES ── */
+.rpt-wrap{padding:0;max-width:none}
+/* page card wrapper */
+.pg-card{background:var(--sur);border-radius:var(--r2);box-shadow:var(--sh2);padding:26px 28px;margin-bottom:16px}
+
+/* section label */
+.sec-label{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.sl-title{font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.2px}
+.sl-meta{font-size:12px;color:var(--txt3);margin-left:auto;
+  background:var(--bg);padding:3px 10px;border-radius:20px}
+
+/* big stat — card style */
+.stat-n{font-size:44px;font-weight:800;line-height:1;margin-bottom:3px;letter-spacing:-1px}
+.stat-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--txt3);margin-top:8px}
+.stat-s{font-size:12px;color:var(--txt3);margin-top:3px}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.stats-row>div{background:var(--sur);border-radius:var(--r2);padding:22px 24px;
+  box-shadow:var(--sh);transition:box-shadow .2s}
+.stats-row>div:hover{box-shadow:var(--sh2)}
+
+/* clean reko card */
+.reko-card{display:flex;align-items:flex-start;justify-content:space-between;
+  padding:24px 28px;background:var(--sur);border-radius:var(--r2);
+  box-shadow:var(--sh2);margin-bottom:10px}
+.reko-score{font-size:52px;font-weight:800;color:var(--blue);line-height:1;
+  flex-shrink:0;margin-left:28px;letter-spacing:-2px}
+.reko-name{font-size:22px;font-weight:800;margin-bottom:12px;color:var(--txt);letter-spacing:-.4px}
+
+/* show-more toggle button */
+.show-more{display:inline-flex;align-items:center;gap:6px;font-size:13px;
+  font-weight:600;color:var(--blue);cursor:pointer;background:none;
+  border:none;font-family:inherit;padding:6px 0}
+.show-more:hover{color:var(--blue-d)}
+.show-more .sm-arrow{transition:transform .2s;display:inline-block}
+
+/* accordion — card style */
+.acc{display:flex;flex-direction:column;gap:8px}
+.acc-item{background:var(--sur);border-radius:var(--r2);box-shadow:var(--sh);
+  overflow:hidden;transition:box-shadow .15s}
+.acc-item.open{box-shadow:var(--sh2)}
+.acc-trigger{display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;cursor:pointer;font-size:14px;font-weight:600;color:var(--txt);
+  user-select:none;transition:color .12s}
+.acc-trigger:hover{color:var(--blue)}
+.acc-num{width:30px;height:30px;border-radius:10px;background:var(--bg);
+  font-size:12px;font-weight:800;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;margin-right:12px;color:var(--txt2)}
+.acc-item.open .acc-num{background:var(--org);color:#fff}
+.acc-arrow{font-size:10px;color:var(--txt3);transition:transform .2s;flex-shrink:0}
+.acc-item.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{display:none;padding:0 20px 20px 62px}
+.acc-item.open .acc-body{display:block}
+
+/* tab panes */
+.tab-pane{display:none}
+.tab-pane.on{display:block}
+.tabs2{display:flex;gap:4px;background:var(--bg);border-radius:12px;
+  padding:4px;width:fit-content;margin-bottom:28px}
+.tab2{padding:8px 20px;font-size:13px;font-weight:600;color:var(--txt3);
+  cursor:pointer;border-radius:9px;transition:all .15s}
+.tab2.on{background:var(--sur);color:var(--blue);box-shadow:var(--sh);font-weight:700}
+.tab2:hover:not(.on){color:var(--txt);background:rgba(255,255,255,.5)}
+
+/* ikigai panel */
+.ik-panel{display:none;background:var(--sur);border-radius:var(--r2);
+  padding:20px 22px;margin-top:16px;box-shadow:var(--sh2)}
+.ik-panel.on{display:block}
+
+/* alt grid */
+.alt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.alt-item{padding:18px;border-radius:var(--r2);cursor:pointer;
+  transition:all .18s;background:var(--sur);box-shadow:var(--sh)}
+.alt-item:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+.alt-rank{font-size:10px;color:var(--txt3);font-weight:700;text-transform:uppercase;
+  letter-spacing:.5px;margin-bottom:6px}
+.alt-name{font-size:14px;font-weight:800;color:var(--txt);margin-bottom:3px;letter-spacing:-.2px}
+.alt-camps{font-size:12px;color:var(--txt3);margin-bottom:12px}
+.alt-pct{font-size:28px;font-weight:800;color:var(--blue);letter-spacing:-1px}
+
+/* gap dual-layer visualization */
+.gvr{display:flex;align-items:center;gap:14px;padding:12px 14px;
+  border-radius:12px;cursor:default;transition:all .15s;margin-bottom:4px}
+.gvr:hover{background:var(--sur);box-shadow:var(--sh)}
+.gvr-lbl{width:38px;font-size:11px;font-weight:800;color:var(--txt3);
+  flex-shrink:0;text-transform:uppercase;letter-spacing:.4px}
+.gvr-track{flex:1;height:12px;background:var(--bg);border-radius:8px;
+  position:relative;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.06)}
+.gvr-pot{position:absolute;left:0;top:0;height:100%;border-radius:8px;opacity:.2}
+.gvr-act{position:absolute;left:0;top:0;height:100%;border-radius:8px}
+.gvr-info{opacity:0;transition:opacity .15s;font-size:11px;font-weight:700;
+  width:120px;text-align:right;flex-shrink:0;line-height:1.4}
+.gvr:hover .gvr-info{opacity:1}
+
+/* rekomendasi expandable card */
+.rk-card2{background:var(--sur);border-radius:var(--r2);box-shadow:var(--sh);
+  margin-bottom:10px;overflow:hidden;transition:box-shadow .15s}
+.rk-card2.open{box-shadow:var(--sh2)}
+.rk-card2-hdr{display:flex;align-items:center;gap:16px;cursor:pointer;
+  padding:18px 22px;transition:background .12s;user-select:none}
+.rk-card2-hdr:hover{background:var(--blue-l)}
+.rk-card2.open .rk-card2-hdr{background:var(--blue-l)}
+.rk2-rank{font-size:10px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.6px;color:var(--txt3);width:24px;flex-shrink:0}
+.rk2-name{font-size:15px;font-weight:800;color:var(--txt);flex:1;
+  letter-spacing:-.2px}
+.rk-card2.open .rk2-name{color:var(--blue)}
+.rk2-score{font-size:22px;font-weight:800;color:var(--blue);flex-shrink:0;letter-spacing:-1px}
+.rk2-arrow{font-size:10px;color:var(--txt3);transition:transform .2s;
+  flex-shrink:0;margin-left:8px;background:var(--bg);width:26px;height:26px;
+  border-radius:8px;display:flex;align-items:center;justify-content:center}
+.rk-card2.open .rk2-arrow{transform:rotate(180deg);background:var(--blue-b);color:var(--blue)}
+.rk2-body{display:none;padding:16px 22px 20px}
+.rk-card2.open .rk2-body{display:block}
+.rk2-why{font-size:13px;color:var(--txt2);line-height:1.75;margin-bottom:16px}
+
+/* campus expand (in rekom page) */
+.camp-expand{display:none;background:var(--bg);border-radius:var(--r);
+  overflow:hidden;margin-top:10px}
+.camp-expand.on{display:block}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     ONBOARDING SCREENS  (split layout)
+═════════════════════════════════════════════════════════ -->
+
+<!-- START -->
+<section id="s-start" class="screen active">
+<div class="split">
+  <div class="sp-l">
+    <div class="logo">✦ Bakat<span>.id</span></div>
+    <div style="margin:auto 0">
+      <div class="hl">Temukan jurusan yang benar-benar cocok buatmu.</div>
+      <div class="sub">Bukan sekadar nilai. Kombinasi tes psikometri ilmiah + data tryout SNBT → rekomendasi jurusan yang personal.</div>
+      <div class="pills">
+        <div class="pill"><span class="pi">🧠</span><span>Tes TIKI · LAI · TALITA (psikometri tervalidasi)</span></div>
+        <div class="pill"><span class="pi">📊</span><span>Gap analysis potensi vs tryout SNBT-mu</span></div>
+        <div class="pill"><span class="pi">🏫</span><span>Rekomendasi kampus lengkap dengan peluang masuk</span></div>
+      </div>
+    </div>
+    <div class="footnote">Bakat.id Education · Talentlytica © 2025</div>
+  </div>
+  <div class="sp-r">
+    <div class="form-wrap">
+      <div class="form-title">Pilih cara masuk</div>
+      <div class="form-sub">Ada dua jalur onboarding ke Bakat.id:</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px">
+        <div onclick="go('s-a2')" style="background:var(--blue-l);border:2px solid var(--blue);border-radius:var(--r2);padding:20px;cursor:pointer;transition:all .15s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+          <div style="font-size:24px;margin-bottom:10px">📨</div>
+          <div style="font-size:14px;font-weight:800;color:var(--blue-d);margin-bottom:5px">Punya kode bimbel?</div>
+          <div style="font-size:12px;color:var(--txt2);line-height:1.5">Dapat kode aktivasi setelah ikut tryout di bimbel. Data tryout langsung ter-import.</div>
+          <div style="font-size:12px;font-weight:700;color:var(--blue);margin-top:10px">Masuk via kode →</div>
+        </div>
+        <div onclick="go('s-b1')" style="background:var(--teal-l);border:2px solid var(--teal);border-radius:var(--r2);padding:20px;cursor:pointer;transition:all .15s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+          <div style="font-size:24px;margin-bottom:10px">✏️</div>
+          <div style="font-size:14px;font-weight:800;color:#0A5544;margin-bottom:5px">Daftar sendiri</div>
+          <div style="font-size:12px;color:var(--txt2);line-height:1.5">Temukan Bakat.id secara mandiri. Input nilai tryout secara manual.</div>
+          <div style="font-size:12px;font-weight:700;color:var(--teal);margin-top:10px">Daftar gratis →</div>
+        </div>
+      </div>
+      <div class="or"><span>atau langsung ke laporan demo</span></div>
+      <button class="btn sec" onclick="goDash('dp-c5','lnk-c5')">Lihat contoh laporan (demo) →</button>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- A1 — NOTIFIKASI (simplified to "entry via link") -->
+<section id="s-a1" class="screen">
+<div class="split">
+  <div class="sp-l">
+    <div class="logo">✦ Bakat<span>.id</span></div>
+    <div style="margin:auto 0">
+      <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.7px;margin-bottom:14px">Jalur A · Step 1 dari 3</div>
+      <div class="hl">Kamu mendapat link dari bimbelmu</div>
+      <div class="sub">Bimbel mengirimkan link atau kode aktivasi setelah kamu mengikuti tryout. Data nilaimu sudah tersimpan di sistem mereka.</div>
+    </div>
+    <div class="footnote">Bakat.id Education · Talentlytica © 2025</div>
+  </div>
+  <div class="sp-r">
+    <div class="form-wrap">
+      <div class="pg">Jalur A · Langkah 1 dari 3</div>
+      <div class="form-title" style="font-size:20px">Kamu baru saja menerima:</div>
+      <div style="background:#F5F5F5;border-radius:var(--r2);padding:20px;margin:20px 0;border-left:4px solid #25D366">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div style="width:36px;height:36px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:#fff">EL</div>
+          <div><div style="font-size:13px;font-weight:700">Bimbel Edu Lab</div><div style="font-size:11px;color:var(--txt2)">WhatsApp</div></div>
+        </div>
+        <div style="background:#fff;border-radius:0 10px 10px 10px;padding:14px;font-size:13px;line-height:1.8;color:var(--txt)">
+          Hei Raka! 👋<br>Laporan penjurusan Bakat.id-mu siap.<br><br>
+          Kode aktivasi: <strong style="font-size:17px;letter-spacing:3px;color:var(--blue)">EDLB-1234</strong><br><br>
+          atau: <span style="color:var(--blue);font-weight:600">bit.ly/bakat-raka</span>
+        </div>
+      </div>
+      <button class="btn pri" onclick="go('s-a2')">Buka Bakat.id →</button>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- A2 — INPUT KODE -->
+<section id="s-a2" class="screen">
+<div class="split">
+  <div class="sp-l">
+    <div class="logo">✦ Bakat<span>.id</span></div>
+    <div style="margin:auto 0">
+      <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.7px;margin-bottom:14px">Jalur A · Step 2 dari 3</div>
+      <div class="hl">Masukkan kode aktivasi dari bimbelmu</div>
+      <div class="sub">Kode ini terikat ke data tryout kamu di bimbel. Setelah divalidasi, nilai tryout-mu akan otomatis ter-import.</div>
+      <div class="pills">
+        <div class="pill"><span class="pi">🔐</span><span>Kode unik per siswa, berlaku 30 hari</span></div>
+        <div class="pill"><span class="pi">⚡</span><span>Tidak perlu input nilai tryout manual</span></div>
+      </div>
+    </div>
+    <div class="footnote">Bakat.id Education · Talentlytica © 2025</div>
+  </div>
+  <div class="sp-r">
+    <div class="form-wrap">
+      <div class="pg">Jalur A · Langkah 2 dari 3</div>
+      <div class="form-title">Aktivasi Kode</div>
+      <div class="form-sub">Ketik kode 8 karakter yang dikirim bimbelmu.</div>
+      <div class="fl">
+        <label>Kode Aktivasi</label>
+        <input id="kode" class="inp-code" type="text" placeholder="XXXX-0000" maxlength="12">
+        <div class="fl-hint">Tidak peka huruf besar/kecil · contoh: EDLB-1234</div>
+      </div>
+      <button class="btn pri" style="margin-top:8px" onclick="doKode()">Verifikasi &amp; Lanjut →</button>
+      <div class="or"><span>atau</span></div>
+      <button class="btn sec" onclick="go('s-b2')">Daftar tanpa kode (Jalur B)</button>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- A-ERR -->
+<section id="s-aerr" class="screen">
+<div class="split">
+  <div class="sp-l">
+    <div class="logo">✦ Bakat<span>.id</span></div>
+    <div style="margin:auto 0">
+      <div class="hl">Kode tidak dikenali</div>
+      <div class="sub">Pastikan kode diketik persis seperti yang dikirim bimbelmu, termasuk tanda hubung jika ada.</div>
+    </div>
+    <div class="footnote">Bakat.id Education · Talentlytica © 2025</div>
+  </div>
+  <div class="sp-r">
+    <div class="form-wrap">
+      <div class="al-err alert"><span class="ai">⚠️</span><div><strong>Kode tidak ditemukan</strong>Pastikan kode 8 karakter dan masih aktif (berlaku 30 hari). Hubungi bimbelmu jika masalah berlanjut.</div></div>
+      <div class="fl">
+        <label>Kode Aktivasi</label>
+        <input class="inp-code" style="border-color:var(--red)" type="text" placeholder="XXXX-0000" maxlength="12">
+      </div>
+      <div class="btn-row">
+        <button class="btn pri" onclick="go('s-a2')">Coba Lagi</button>
+        <button class="btn sec" onclick="go('s-b2')">Daftar Tanpa Kode</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- A3 — REVIEW DATA -->
+<section id="s-a3" class="screen">
+<div class="split">
+  <div class="sp-l">
+    <div class="logo">✦ Bakat<span>.id</span></div>
+    <div style="margin:auto 0">
+      <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.7px;margin-bottom:14px">Jalur A · Step 3 dari 3</div>
+      <div class="hl">Konfirmasi data tryout-mu</div>
+      <div class="sub">Nilai-nilai ini di-import langsung dari sistem Bimbel Edu Lab. Pastikan semuanya sudah benar sebelum lanjut ke tes psikometri.</div>
+    </div>
+    <div class="footnote">Bakat.id Education · Talentlytica © 2025</div>
+  </div>
+  <div class="sp-r" style="align-items:flex-start;padding-top:48px">
+    <div class="form-wrap" style="max-width:520px">
+      <div class="pg">Jalur A · Langkah 3 dari 3</div>
+      <div class="form-title">Review Data Tryout</div>
+      <div class="al-ok alert" style="margin-top:12px"><span class="ai">✅</span><div><strong>Kode valid — data dimuat dari Bimbel Edu Lab</strong></div></div>
+      <div class="dp" style="margin-top:4px">
+        <div class="dp-ttl">TPS — Tes Potensi Skolastik</div>
+        <div class="dp-grid">
+          <div class="dp-cell"><div class="dl">PM</div><div class="dv">55</div></div>
+          <div class="dp-cell"><div class="dl">PU</div><div class="dv">63</div></div>
+          <div class="dp-cell"><div class="dl">PPU</div><div class="dv">50</div></div>
+          <div class="dp-cell"><div class="dl">PBM</div><div class="dv">50</div></div>
+          <div class="dp-cell"><div class="dl">PK</div><div class="dv">90</div></div>
+          <div class="dp-cell"><div class="dl">LBI</div><div class="dv">80</div></div>
+        </div>
+      </div>
+      <div class="dp">
+        <div class="dp-ttl">TKA — Tes Kemampuan Akademik</div>
+        <div class="dp-grid g3">
+          <div class="dp-cell"><div class="dl">Matematika</div><div class="dv">80</div></div>
+          <div class="dp-cell"><div class="dl">B. Indonesia</div><div class="dv">70</div></div>
+          <div class="dp-cell"><div class="dl">B. Inggris</div><div class="dv">60</div></div>
+        </div>
+      </div>
+      <div class="al-warn alert"><span class="ai">✏️</span><div>Ada nilai yang tidak sesuai? <strong onclick="go('s-b3')" style="cursor:pointer;text-decoration:underline">Edit manual →</strong></div></div>
+      <button class="btn pri" onclick="go('s-c1')">Konfirmasi &amp; Lanjut ke Tes →</button>
+      <p style="font-size:12px;color:var(--txt3);text-align:center;margin-top:10px">Tes psikometri dilaksanakan di ases.id (platform Talentlytica)</p>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- B1 — LANDING -->
+<section id="s-b1" class="screen">
+<div class="split">
+  <div class="sp-l">
+    <div class="logo">✦ Bakat<span>.id</span></div>
+    <div style="margin:auto 0">
+      <div class="hl">Laporan penjurusan yang benar-benar personal.</div>
+      <div class="sub">Bakat.id menggabungkan tes psikometri ilmiah (TIKI, LAI, TALITA) dengan data tryout SNBT-mu untuk menghasilkan rekomendasi jurusan dan rencana aksi yang konkret.</div>
+      <div class="pills">
+        <div class="pill"><span class="pi">🧠</span><span>IQ · Learning Agility · Tipe minat Holland</span></div>
+        <div class="pill"><span class="pi">📈</span><span>Gap analysis — subtes mana yang paling bisa kamu kejar</span></div>
+        <div class="pill"><span class="pi">🏫</span><span>Competitive position bar — peluang nyata masuk kampus</span></div>
+      </div>
+    </div>
+    <div class="footnote">Bakat.id Education · Talentlytica © 2025</div>
+  </div>
+  <div class="sp-r">
+    <div class="form-wrap">
+      <div class="form-title">Mulai Gratis</div>
+      <div class="form-sub">Buat akun dalam 2 menit. Tidak perlu kartu kredit.</div>
+      <button class="btn pri" style="margin-bottom:12px;font-size:15px;padding:15px" onclick="go('s-b2')">Daftar Sekarang →</button>
+      <div class="or"><span>sudah punya kode aktivasi dari bimbel?</span></div>
+      <button class="btn sec" onclick="go('s-a2')">Masuk dengan Kode Aktivasi</button>
+      <div style="margin-top:28px;background:var(--bg);border-radius:var(--r2);padding:16px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:10px">Yang kamu dapatkan</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--teal);font-weight:700">✓</span> Tes psikometri lengkap (TIKI + LAI + TALITA)</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--teal);font-weight:700">✓</span> Gap analysis tryout vs potensi</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--teal);font-weight:700">✓</span> Top 4 rekomendasi jurusan + kampus</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--teal);font-weight:700">✓</span> Rencana aksi 3 bulan SNBT</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- B2 — REGISTER -->
+<section id="s-b2" class="screen">
+<div class="split">
+  <div class="sp-l">
+    <div class="logo">✦ Bakat<span>.id</span></div>
+    <div style="margin:auto 0">
+      <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.7px;margin-bottom:14px">Jalur B · Step 1 dari 2</div>
+      <div class="hl">Buat akun Bakat.id</div>
+      <div class="sub">Cukup isi data dasar. Informasi sekolah dan kelas digunakan untuk menyesuaikan konteks laporan.</div>
+    </div>
+    <div class="footnote">Bakat.id Education · Talentlytica © 2025</div>
+  </div>
+  <div class="sp-r">
+    <div class="form-wrap">
+      <div class="pg">Jalur B · Langkah 1 dari 2</div>
+      <div class="form-title">Buat Akun Baru</div>
+      <div class="fl"><label>Nama Lengkap</label><input class="inp" type="text" placeholder="Raka Pratama"></div>
+      <div class="fl"><label>Asal Sekolah</label><input class="inp" type="text" placeholder="SMAN 5 Surabaya"></div>
+      <div class="fl-row" style="margin-bottom:16px">
+        <div class="fl" style="margin:0"><label>Kelas</label><select class="inp"><option>12 IPA</option><option>11 IPA</option><option>12 IPS</option></select></div>
+        <div class="fl" style="margin:0"><label>Kota</label><input class="inp" type="text" placeholder="Surabaya"></div>
+      </div>
+      <button class="btn pri" onclick="go('s-b3')">Buat Akun →</button>
+      <button class="btn ghost" onclick="go('s-start')">Sudah punya akun? Masuk</button>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- B3 — INPUT TRYOUT -->
+<section id="s-b3" class="screen">
+<div class="split">
+  <div class="sp-l">
+    <div class="logo">✦ Bakat<span>.id</span></div>
+    <div style="margin:auto 0">
+      <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.7px;margin-bottom:14px">Jalur B · Step 2 dari 2</div>
+      <div class="hl">Input nilai tryout SNBT terakhirmu</div>
+      <div class="sub">Nilai ini digunakan untuk gap analysis — membandingkan performa aktual dengan potensi yang terdeteksi dari tes psikometri. Estimasi oke.</div>
+      <div class="pills">
+        <div class="pill"><span class="pi">📝</span><span>Skala 0–100 per subtes</span></div>
+        <div class="pill"><span class="pi">💡</span><span>Tidak tahu skor persis? Masukkan estimasi</span></div>
+      </div>
+    </div>
+    <div class="footnote">Bakat.id Education · Talentlytica © 2025</div>
+  </div>
+  <div class="sp-r" style="align-items:flex-start;padding-top:48px">
+    <div class="form-wrap" style="max-width:480px">
+      <div class="pg">Jalur B · Langkah 2 dari 2</div>
+      <div class="form-title">Nilai Tryout SNBT</div>
+      <div style="margin-top:16px">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--txt2);margin-bottom:8px">TPS — Tes Potensi Skolastik</div>
+        <div class="fl-row3" style="margin-bottom:14px">
+          <div class="fl" style="margin:0"><label>PM</label><input class="inp" style="text-align:center;font-weight:700" type="number" placeholder="55" min="0" max="100"></div>
+          <div class="fl" style="margin:0"><label>PU</label><input class="inp" style="text-align:center;font-weight:700" type="number" placeholder="63" min="0" max="100"></div>
+          <div class="fl" style="margin:0"><label>PPU</label><input class="inp" style="text-align:center;font-weight:700" type="number" placeholder="50" min="0" max="100"></div>
+        </div>
+        <div class="fl-row3" style="margin-bottom:20px">
+          <div class="fl" style="margin:0"><label>PBM</label><input class="inp" style="text-align:center;font-weight:700" type="number" placeholder="50" min="0" max="100"></div>
+          <div class="fl" style="margin:0"><label>PK</label><input class="inp" style="text-align:center;font-weight:700" type="number" placeholder="90" min="0" max="100"></div>
+          <div class="fl" style="margin:0"><label>LBI</label><input class="inp" style="text-align:center;font-weight:700" type="number" placeholder="80" min="0" max="100"></div>
+        </div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--txt2);margin-bottom:8px">TKA — Tes Kemampuan Akademik</div>
+        <div class="fl-row3" style="margin-bottom:20px">
+          <div class="fl" style="margin:0"><label>Matematika</label><input class="inp" style="text-align:center;font-weight:700" type="number" placeholder="80" min="0" max="100"></div>
+          <div class="fl" style="margin:0"><label>B. Indonesia</label><input class="inp" style="text-align:center;font-weight:700" type="number" placeholder="70" min="0" max="100"></div>
+          <div class="fl" style="margin:0"><label>B. Inggris</label><input class="inp" style="text-align:center;font-weight:700" type="number" placeholder="60" min="0" max="100"></div>
+        </div>
+        <button class="btn pri" onclick="go('s-c1')">Lanjut ke Tes Psikometri →</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- C1 — REDIRECT -->
+<section id="s-c1" class="screen">
+<div class="split">
+  <div class="sp-l">
+    <div class="logo">✦ Bakat<span>.id</span></div>
+    <div style="margin:auto 0">
+      <div class="hl">Siap untuk tes psikometri?</div>
+      <div class="sub">Kamu akan diarahkan ke ases.id, platform tes psikometri Talentlytica. Setelah selesai, hasil akan otomatis dikirim ke Bakat.id.</div>
+      <div class="pills">
+        <div class="pill"><span class="pi">🧠</span><span>TIKI — Tes kecerdasan umum · 30 menit</span></div>
+        <div class="pill"><span class="pi">⚡</span><span>LAI — Learning Agility Index · 20 menit</span></div>
+        <div class="pill"><span class="pi">🎯</span><span>TALITA — Tipe minat Holland · 15 menit</span></div>
+      </div>
+    </div>
+    <div class="footnote">Bakat.id Education · Talentlytica © 2025</div>
+  </div>
+  <div class="sp-r">
+    <div class="form-wrap" style="text-align:center">
+      <div class="spin" style="margin:0 auto 24px"></div>
+      <div class="form-title">Mengarahkan ke ases.id...</div>
+      <div class="form-sub" style="margin-bottom:28px">Pastikan koneksi internet kamu stabil selama tes berlangsung. Jangan tutup tab browser.</div>
+      <button class="btn pri" onclick="go('s-c2')">Mulai Tes di ases.id →</button>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- C2 — TES (ases.id) -->
+<section id="s-c2" class="screen">
+<div style="min-height:100vh;background:#0D2340;display:flex;flex-direction:column">
+  <div style="background:#0A1A30;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)">
+    <div style="font-size:14px;font-weight:800;color:#4A90C9">ases.id</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.5)">TIKI · Soal 5 dari 30</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.5)">⏱ 12:35 tersisa</div>
+  </div>
+  <div style="padding:8px 32px;background:#0A1A30">
+    <div style="height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden">
+      <div style="width:17%;height:100%;background:#4A90C9;border-radius:3px"></div>
+    </div>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:40px">
+    <div class="test-wrap">
+      <div class="test-q" style="background:rgba(255,255,255,.06);min-height:160px">
+        <div class="qt" style="color:rgba(255,255,255,.5)">Temukan pola urutan gambar yang benar:</div>
+        <div class="qb" style="color:#7EB5D4;letter-spacing:14px">△&nbsp;○&nbsp;□&nbsp;&nbsp;△&nbsp;○&nbsp;<span style="color:#FFC943">?</span></div>
+      </div>
+      <div class="opts">
+        <div class="opt" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);color:#fff" onclick="go('s-c3')">
+          <div class="ol" style="background:rgba(74,144,201,.2);color:#4A90C9">A</div> Segitiga (△)
+        </div>
+        <div class="opt" style="background:rgba(74,144,201,.1);border-color:#4A90C9;color:#fff" onclick="go('s-c3')">
+          <div class="ol" style="background:#4A90C9;color:#fff">B</div> Kotak (□) <span style="margin-left:auto;font-size:11px;color:#4A90C9">← pilih untuk lanjut</span>
+        </div>
+        <div class="opt" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);color:#fff" onclick="go('s-c3')">
+          <div class="ol" style="background:rgba(74,144,201,.2);color:#4A90C9">C</div> Lingkaran (○)
+        </div>
+        <div class="opt" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);color:#fff" onclick="go('s-c3')">
+          <div class="ol" style="background:rgba(74,144,201,.2);color:#4A90C9">D</div> Berlian (◇)
+        </div>
+      </div>
+      <button class="btn pri" onclick="go('s-c3')">Lanjut →</button>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- C3 — TES SELESAI -->
+<section id="s-c3" class="screen">
+<div style="min-height:100vh;background:#0D2340;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px">
+    <div style="width:80px;height:80px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 20px">✓</div>
+    <div style="font-size:28px;font-weight:800;color:#fff;margin-bottom:8px">Semua Tes Selesai!</div>
+    <div style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:32px">TIKI · LAI · TALITA sudah selesai dikerjakan.<br>Hasil sedang dikirim ke Bakat.id...</div>
+    <div style="background:rgba(255,255,255,.08);border-radius:50px;height:10px;overflow:hidden;margin-bottom:8px">
+      <div style="width:100%;height:100%;background:var(--teal);border-radius:50px"></div>
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.35);margin-bottom:32px">100% · Terkirim ke Bakat.id</div>
+    <button class="btn pri" onclick="go('s-c4')">Kembali ke Bakat.id →</button>
+  </div>
+</div>
+</section>
+
+
+<!-- C4 — PROCESSING -->
+<section id="s-c4" class="screen">
+<div class="split">
+  <div class="sp-l">
+    <div class="logo">✦ Bakat<span>.id</span></div>
+    <div style="margin:auto 0">
+      <div class="hl">Laporan personalmu sedang disiapkan</div>
+      <div class="sub">Kami sedang menganalisis hasil tes dan data tryout-mu. Proses ini membutuhkan kurang dari 1 menit.</div>
+    </div>
+    <div class="footnote">Bakat.id Education · Talentlytica © 2025</div>
+  </div>
+  <div class="sp-r">
+    <div class="form-wrap" style="text-align:center">
+      <div class="spin" style="margin:0 auto 24px"></div>
+      <div class="form-title">Menyusun laporan...</div>
+      <div class="form-sub" style="margin-bottom:28px">Biasanya kurang dari 1 menit</div>
+      <div class="steps" style="margin:0 auto 28px;text-align:left">
+        <div class="step done"><div class="si">✓</div><div>Data tryout diterima</div></div>
+        <div class="step done"><div class="si">✓</div><div>Hasil TIKI, LAI, TALITA diterima</div></div>
+        <div class="step done"><div class="si">✓</div><div>Gap analysis dihitung</div></div>
+        <div class="step doing"><div class="si">⟳</div><div><strong>Menyusun rekomendasi jurusan...</strong></div></div>
+        <div class="step todo"><div class="si">○</div><div>Rencana aksi personal</div></div>
+      </div>
+      <button class="btn pri" onclick="goDash('dp-c5','lnk-c5')">Lihat Laporan →</button>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     DASHBOARD SHELL  (top nav + sidebar + single-page report)
+═════════════════════════════════════════════════════════ -->
+<div id="dash-shell" class="screen" style="flex-direction:column">
+  <nav class="dash-top">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:32px;height:32px;border-radius:10px;background:var(--blue);
+        display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;
+        color:#fff;box-shadow:0 2px 8px rgba(37,121,198,.35)">✦</div>
+      <div class="dt-logo">Bakat<span>.id</span></div>
+    </div>
+    <div style="width:1px;height:20px;background:var(--brd);margin:0 4px"></div>
+    <span style="font-size:12px;color:var(--txt3);font-weight:500">Laporan Penjurusan</span>
+    <div class="dt-user">
+      <div class="dt-uinfo">
+        <div class="dt-uname">Raka Pratama</div>
+        <div class="dt-usub">SMAN 5 Surabaya · Kelas 12 IPA</div>
+      </div>
+      <div class="dt-av">RP</div>
+    </div>
+  </nav>
+  <div class="dash-body">
+    <aside class="dash-side">
+      <div class="ds-section">Laporan</div>
+      <div id="lnk-dash"    class="ds-link on" onclick="switchPage('dp-dashboard','lnk-dash')">
+        <span class="di" style="width:28px;height:28px;background:var(--blue-l);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px">📊</span> Dashboard</div>
+      <div id="lnk-profil"  class="ds-link"    onclick="switchPage('dp-profil','lnk-profil')">
+        <span class="di" style="width:28px;height:28px;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px">🧠</span> Profil Tes</div>
+      <div id="lnk-rekom"   class="ds-link"    onclick="switchPage('dp-rekom','lnk-rekom')">
+        <span class="di" style="width:28px;height:28px;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px">🏫</span> Rekomendasi</div>
+      <div id="lnk-rencana" class="ds-link"    onclick="switchPage('dp-rencana','lnk-rencana')">
+        <span class="di" style="width:28px;height:28px;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px">📅</span> Rencana Aksi</div>
+      <div class="ds-foot">v0.3 · prototype</div>
+    </aside>
+    <main id="dash-main" class="dash-main">
+
+      <!-- ══ 4-PAGE DASHBOARD ══ -->
+      <div class="rpt-wrap">
+
+      <!-- ─────────────────────────────────────────────
+           PAGE 1: DASHBOARD
+      ───────────────────────────────────────────── -->
+      <div id="dp-dashboard" class="dash-page on">
+
+        <!-- ① Greeting row -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+          <div>
+            <div style="font-size:26px;font-weight:800;letter-spacing:-.7px;color:var(--txt);margin-bottom:3px">Hei, Raka! 👋</div>
+            <div style="font-size:13px;color:var(--txt3)">SMAN 5 Surabaya · Kelas 12 IPA · Laporan selesai</div>
+          </div>
+          <div style="background:var(--blue);color:#fff;border-radius:20px;padding:8px 18px;font-size:12px;font-weight:700;letter-spacing:.3px;box-shadow:0 3px 10px rgba(37,121,198,.35)">SNBT 2025</div>
+        </div>
+
+        <!-- ② 4 colored stat cards -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px">
+          <div style="background:var(--blue-l);border-radius:var(--r2);padding:22px 20px;cursor:pointer;transition:transform .15s,box-shadow .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow=''" onclick="switchPage('dp-profil','lnk-profil')">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--blue);margin-bottom:14px">TIKI · IQ Score</div>
+            <div style="font-size:52px;font-weight:800;color:var(--blue-d);letter-spacing:-3px;line-height:1;margin-bottom:8px">115</div>
+            <div style="font-size:12px;color:var(--blue);font-weight:600;opacity:.8">Bright Normal · P84</div>
+          </div>
+          <div style="background:var(--vio-l);border-radius:var(--r2);padding:22px 20px;cursor:pointer;transition:transform .15s,box-shadow .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow=''" onclick="switchPage('dp-profil','lnk-profil')">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--vio);margin-bottom:14px">LAI · Learning</div>
+            <div style="font-size:52px;font-weight:800;color:var(--vio);letter-spacing:-3px;line-height:1;margin-bottom:8px">88</div>
+            <div style="font-size:12px;color:var(--vio);font-weight:600;opacity:.8">Mandiri · Cepat serap</div>
+          </div>
+          <div style="background:var(--org-l);border-radius:var(--r2);padding:22px 20px;cursor:pointer;transition:transform .15s,box-shadow .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow=''" onclick="switchPage('dp-profil','lnk-profil')">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--org);margin-bottom:14px">TALITA · Holland</div>
+            <div style="font-size:52px;font-weight:800;color:var(--org);letter-spacing:-3px;line-height:1;margin-bottom:8px">I</div>
+            <div style="font-size:12px;color:var(--org);font-weight:600;opacity:.8">Investigative · Analitik</div>
+          </div>
+          <div style="background:var(--teal-l);border-radius:var(--r2);padding:22px 20px;cursor:pointer;transition:transform .15s,box-shadow .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow=''" onclick="switchPage('dp-rekom','lnk-rekom')">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--teal);margin-bottom:14px">Match #1</div>
+            <div style="font-size:52px;font-weight:800;color:var(--teal);letter-spacing:-3px;line-height:1;margin-bottom:8px">87%</div>
+            <div style="font-size:12px;color:var(--teal);font-weight:600;opacity:.8">Teknik Informatika</div>
+          </div>
+        </div>
+
+        <!-- ③ 2-col: Reko card + Gap summary -->
+        <div style="display:grid;grid-template-columns:1fr 272px;gap:14px;margin-bottom:16px">
+
+          <!-- Reko card -->
+          <div class="pg-card" style="padding:26px 28px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+              <div>
+                <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--blue);margin-bottom:6px">Rekomendasi Utama</div>
+                <div style="font-size:21px;font-weight:800;letter-spacing:-.4px;color:var(--txt)">Teknik Informatika</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:42px;font-weight:800;color:var(--blue);letter-spacing:-2px;line-height:1">87%</div>
+                <div style="font-size:10px;color:var(--txt3);margin-top:2px">kecocokan</div>
+              </div>
+            </div>
+            <!-- 2×2 colored tiles -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px">
+              <div style="padding:13px 14px;background:var(--blue-l);border-radius:12px">
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--blue);margin-bottom:5px">Passing grade</div>
+                <div style="font-size:22px;font-weight:800;color:var(--blue-d);letter-spacing:-1px;line-height:1">~710</div>
+                <div style="font-size:11px;color:var(--blue);opacity:.65;margin-top:3px">UTBK</div>
+              </div>
+              <div style="padding:13px 14px;background:var(--org-l);border-radius:12px">
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--org);margin-bottom:5px">Skor kamu</div>
+                <div style="font-size:22px;font-weight:800;color:var(--org);letter-spacing:-1px;line-height:1">~630</div>
+                <div style="font-size:11px;color:var(--org);opacity:.75;margin-top:3px">gap <strong>+70</strong></div>
+              </div>
+              <div style="padding:13px 14px;background:var(--bg);border-radius:12px">
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:5px">Daya tampung</div>
+                <div style="font-size:22px;font-weight:800;color:var(--txt);letter-spacing:-1px;line-height:1">120</div>
+                <div style="font-size:11px;color:var(--txt3);margin-top:3px">kursi / tahun</div>
+              </div>
+              <div style="padding:13px 14px;background:var(--teal-l);border-radius:12px">
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--teal);margin-bottom:5px">UKT range</div>
+                <div style="font-size:18px;font-weight:800;color:var(--teal);letter-spacing:-.5px;line-height:1">500rb</div>
+                <div style="font-size:11px;color:var(--teal);opacity:.7;margin-top:3px">s/d 12,5jt</div>
+              </div>
+            </div>
+            <div style="font-size:11px;color:var(--txt3);margin-bottom:8px">Klik kampus untuk detail peluang masuk</div>
+            <div class="chips" style="margin-top:0">
+              <span class="chip" onclick="showCampus('ITS Surabaya','#0A3D7A','ITS')"><span class="av" style="background:#0A3D7A">ITS</span> ITS</span>
+              <span class="chip" onclick="showCampus('Univ. Brawijaya','#C03030','UB')"><span class="av" style="background:#C03030">UB</span> Unibraw</span>
+              <span class="chip" onclick="showCampus('Telkom University','#B03090','Tel')"><span class="av" style="background:#B03090">Tel</span> Telkom</span>
+              <span class="chip" onclick="showCampus('Binus University','#E06020','BNS')"><span class="av" style="background:#E06020">BNS</span> Binus</span>
+            </div>
+            <!-- alt toggle -->
+            <button class="show-more" id="alt-btn" onclick="toggleEl('alt-list','alt-btn')" style="margin-top:12px">
+              Lihat 3 alternatif <span class="sm-arrow">↓</span>
+            </button>
+            <div id="alt-list" style="display:none;margin-top:10px">
+              <div class="alt-grid">
+                <div class="alt-item"><div class="alt-rank">#2</div><div class="alt-name">Sistem Informasi</div><div class="alt-camps">Unibraw · Telkom</div><div class="alt-pct">74%</div></div>
+                <div class="alt-item"><div class="alt-rank">#3</div><div class="alt-name">Data Science</div><div class="alt-camps">Binus · Pradita</div><div class="alt-pct">71%</div></div>
+                <div class="alt-item"><div class="alt-rank">#4</div><div class="alt-name">Teknik Elektro</div><div class="alt-camps">ITS · UI</div><div class="alt-pct">68%</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gap summary card -->
+          <div class="pg-card" style="padding:22px 20px;display:flex;flex-direction:column">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--txt3);margin-bottom:14px">Gap Overview</div>
+            <div style="display:flex;flex-direction:column;gap:0;margin-bottom:20px">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--brd)">
+                <span style="font-size:12px;color:var(--txt2)">Gap terbesar</span>
+                <span style="font-size:13px;font-weight:800;color:var(--org)">PM +33</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--brd)">
+                <span style="font-size:12px;color:var(--txt2)">Sudah baik</span>
+                <span style="font-size:13px;font-weight:800;color:var(--teal)">PK, LBI ✓</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--brd)">
+                <span style="font-size:12px;color:var(--txt2)">Perlu kerja</span>
+                <span style="font-size:13px;font-weight:800;color:var(--txt)">4 dari 6</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0">
+                <span style="font-size:12px;color:var(--txt2)">Potensi naik</span>
+                <span style="font-size:13px;font-weight:800;color:var(--blue)">+100 poin</span>
+              </div>
+            </div>
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--txt3);margin-bottom:12px">Prioritas gap</div>
+            <div style="display:flex;flex-direction:column;gap:10px;flex:1">
+              <div><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:5px"><span style="color:var(--txt2)">PM</span><span style="color:var(--org)">+33</span></div><div style="height:7px;background:var(--bg);border-radius:5px;overflow:hidden"><div style="width:55%;height:100%;background:var(--org);border-radius:5px"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:5px"><span style="color:var(--txt2)">PPU</span><span style="color:var(--blue)">+28</span></div><div style="height:7px;background:var(--bg);border-radius:5px;overflow:hidden"><div style="width:50%;height:100%;background:var(--blue);border-radius:5px"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:5px"><span style="color:var(--txt2)">PBM</span><span style="color:var(--blue)">+28</span></div><div style="height:7px;background:var(--bg);border-radius:5px;overflow:hidden"><div style="width:50%;height:100%;background:var(--blue);border-radius:5px"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:5px"><span style="color:var(--txt2)">PU</span><span style="color:var(--blue)">+25</span></div><div style="height:7px;background:var(--bg);border-radius:5px;overflow:hidden"><div style="width:63%;height:100%;background:var(--blue);border-radius:5px"></div></div></div>
+            </div>
+            <button onclick="switchPage('dp-rencana','lnk-rencana')" style="margin-top:18px;width:100%;padding:11px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(37,121,198,.3);transition:all .15s" onmouseover="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--blue-d').trim()" onmouseout="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--blue').trim()">
+              Lihat rencana aksi →
+            </button>
+          </div>
+        </div>
+
+        <!-- ④ Campus expand panel -->
+        <div id="campus-panel" style="display:none;margin-bottom:16px">
+          <div style="background:var(--sur);border-radius:var(--r2);overflow:hidden;box-shadow:var(--sh2)">
+            <div id="cp-hdr" class="camp-hdr"></div>
+            <div style="padding:22px;display:grid;grid-template-columns:1fr 260px;gap:20px">
+              <div>
+                <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:12px">Competitive Position</div>
+                <div class="comp-bar-wrap"><div class="comp-bar"><div class="comp-marker" style="left:32%"><div style="position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--blue-d);font-weight:700;white-space:nowrap">▲ Posisimu</div></div></div><div class="comp-labels"><span>Rendah</span><span style="color:var(--blue-d);font-weight:700">32% dari bawah</span><span>Tinggi</span></div></div>
+                <div style="margin-top:16px;font-size:13px;color:var(--txt2);line-height:1.65">68% calon pendaftar di atasmu sekarang. Dengan rencana aksi 3 bulan (+33 PM), posisimu bisa naik ke kuartil kedua.</div>
+              </div>
+              <div>
+                <table class="dt"><tr><td>Passing grade</td><td class="hi">~710 UTBK</td></tr><tr><td>Daya tampung</td><td>120 kursi</td></tr><tr><td>UKT range</td><td>500rb–12,5jt</td></tr><tr><td>Akreditasi</td><td>Unggul</td></tr></table>
+                <button class="btn sec" onclick="document.getElementById('campus-panel').style.display='none'" style="margin-top:12px;font-size:12px;width:auto;padding:8px 16px">Tutup</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ⑤ Gap Analysis card -->
+        <div class="pg-card" style="margin-bottom:16px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px">
+            <div>
+              <div style="font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.3px;margin-bottom:3px">Gap Analysis vs Aktualisasi</div>
+              <div style="font-size:12px;color:var(--txt3)">Hover tiap baris untuk detail skor</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--txt3)">
+              <div style="display:flex;align-items:center;gap:5px"><div style="width:20px;height:7px;border-radius:4px;background:var(--org);opacity:.2"></div>Potensi</div>
+              <div style="display:flex;align-items:center;gap:5px"><div style="width:20px;height:7px;border-radius:4px;background:var(--org)"></div>Aktual</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 200px;gap:32px">
+            <div>
+              <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--txt3);margin-bottom:8px">TPS — Tes Potensi Skolastik</div>
+              <div class="gvr"><span class="gvr-lbl">PM</span><div class="gvr-track"><div class="gvr-pot" style="width:88%;background:var(--org)"></div><div class="gvr-act" style="width:55%;background:var(--org)"></div></div><div class="gvr-info" style="color:var(--org)">55 → 88 · gap <strong>+33</strong></div></div>
+              <div class="gvr"><span class="gvr-lbl">PPU</span><div class="gvr-track"><div class="gvr-pot" style="width:78%;background:var(--org)"></div><div class="gvr-act" style="width:50%;background:var(--org)"></div></div><div class="gvr-info" style="color:var(--org)">50 → 78 · gap <strong>+28</strong></div></div>
+              <div class="gvr"><span class="gvr-lbl">PBM</span><div class="gvr-track"><div class="gvr-pot" style="width:78%;background:var(--blue)"></div><div class="gvr-act" style="width:50%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">50 → 78 · gap <strong>+28</strong></div></div>
+              <div class="gvr"><span class="gvr-lbl">PU</span><div class="gvr-track"><div class="gvr-pot" style="width:88%;background:var(--blue)"></div><div class="gvr-act" style="width:63%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">63 → 88 · gap <strong>+25</strong></div></div>
+              <div class="gvr"><span class="gvr-lbl">PK</span><div class="gvr-track"><div class="gvr-pot" style="width:90%;background:var(--teal)"></div><div class="gvr-act" style="width:90%;background:var(--teal)"></div></div><div class="gvr-info" style="color:var(--teal)">90 · sudah baik <strong>✓</strong></div></div>
+              <div class="gvr"><span class="gvr-lbl">LBI</span><div class="gvr-track"><div class="gvr-pot" style="width:80%;background:var(--teal)"></div><div class="gvr-act" style="width:80%;background:var(--teal)"></div></div><div class="gvr-info" style="color:var(--teal)">80 · sudah baik <strong>✓</strong></div></div>
+              <button class="show-more" id="gap-btn" onclick="toggleEl('gap-interp','gap-btn')" style="margin-top:14px">Apa artinya buat kamu? <span class="sm-arrow">↓</span></button>
+              <div id="gap-interp" style="display:none;font-size:13px;color:var(--txt2);line-height:1.75;padding:14px 0">Penalaran Matematika (PM) adalah gap terbesarmu — selisih 33 poin antara skor tryout dan potensi yang terdeteksi dari tes TIKI. Ini bukan soal kemampuan, tapi masalah latihan. IQ 115-mu cukup untuk mencapai skor target; yang kurang hanyalah eksposur soal yang terstruktur.</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0">
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--brd);font-size:13px"><span style="color:var(--txt2)">Gap terbesar</span><span style="font-weight:800;color:var(--org)">PM +33</span></div>
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--brd);font-size:13px"><span style="color:var(--txt2)">Sudah baik</span><span style="font-weight:800;color:var(--teal)">PK, LBI ✓</span></div>
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--brd);font-size:13px"><span style="color:var(--txt2)">Perlu kerja</span><span style="font-weight:800">4 dari 6</span></div>
+              <div style="display:flex;justify-content:space-between;padding:10px 0;font-size:13px"><span style="color:var(--txt2)">Potensi naik</span><span style="font-weight:800;color:var(--blue)">+100 poin</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ⑥ Ikigai card -->
+        <div class="pg-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <div style="font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.3px">Ikigai Synthesis</div>
+            <div style="font-size:12px;color:var(--txt3)">Klik zona diagram untuk detail</div>
+          </div>
+          <svg viewBox="0 0 620 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto" font-family="Inter,system-ui,sans-serif">
+            <circle id="ik-love" cx="204" cy="202" r="172" fill="#C8DEFA" fill-opacity=".55" stroke="#1B6FAD" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('love')"/>
+            <circle id="ik-good" cx="416" cy="202" r="172" fill="#DDD5FF" fill-opacity=".55" stroke="#6D3EAD" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('good')"/>
+            <circle id="ik-need" cx="204" cy="358" r="172" fill="#BBE8D8" fill-opacity=".55" stroke="#0F6E56" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('need')"/>
+            <circle id="ik-paid" cx="416" cy="358" r="172" fill="#FAE4B2" fill-opacity=".55" stroke="#C99A00" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('paid')"/>
+            <circle cx="310" cy="280" r="58" fill="white" fill-opacity=".9" stroke="#1B6FAD" stroke-width="2" stroke-dasharray="5 3" style="cursor:pointer" onclick="ikClick('center')"/>
+            <text x="122" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1B3F6A" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU SUKA</text>
+            <text x="122" y="115" text-anchor="middle" font-size="11.5" fill="#1B6FAD" font-weight="600" style="pointer-events:none">Investigatif</text>
+            <text x="122" y="132" text-anchor="middle" font-size="11.5" fill="#1B6FAD" font-weight="600" style="pointer-events:none">Memecahkan masalah</text>
+            <text x="122" y="149" text-anchor="middle" font-size="11.5" fill="#1B6FAD" font-weight="600" style="pointer-events:none">Pola &amp; abstraksi</text>
+            <text x="498" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#4A1E8C" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU BISA</text>
+            <text x="498" y="115" text-anchor="middle" font-size="11.5" fill="#6D3EAD" font-weight="600" style="pointer-events:none">IQ 115 (Bright Normal)</text>
+            <text x="498" y="132" text-anchor="middle" font-size="11.5" fill="#6D3EAD" font-weight="600" style="pointer-events:none">Abstraksi tinggi</text>
+            <text x="498" y="149" text-anchor="middle" font-size="11.5" fill="#6D3EAD" font-weight="600" style="pointer-events:none">Learning Agility 88</text>
+            <text x="122" y="415" text-anchor="middle" font-size="9" font-weight="800" fill="#0A4A38" letter-spacing="1.2" style="pointer-events:none">DUNIA BUTUHKAN</text>
+            <text x="122" y="434" text-anchor="middle" font-size="11.5" fill="#0F6E56" font-weight="600" style="pointer-events:none">Teknologi &amp; AI</text>
+            <text x="122" y="451" text-anchor="middle" font-size="11.5" fill="#0F6E56" font-weight="600" style="pointer-events:none">Transformasi digital Indonesia</text>
+            <text x="498" y="415" text-anchor="middle" font-size="9" font-weight="800" fill="#8A6500" letter-spacing="1.2" style="pointer-events:none">BISA DIBAYAR</text>
+            <text x="498" y="434" text-anchor="middle" font-size="11.5" fill="#C99A00" font-weight="600" style="pointer-events:none">Gaji IT tertinggi</text>
+            <text x="498" y="451" text-anchor="middle" font-size="11.5" fill="#C99A00" font-weight="600" style="pointer-events:none">Demand &amp; pertumbuhan tinggi</text>
+            <text x="310" y="136" text-anchor="middle" font-size="11" font-weight="800" fill="#2A1060" letter-spacing=".5" style="pointer-events:none">PASSION</text>
+            <text x="310" y="151" text-anchor="middle" font-size="10" fill="#2A1060" style="pointer-events:none">Suka &amp; berbakat</text>
+            <text x="468" y="280" text-anchor="middle" font-size="11" font-weight="800" fill="#7A4400" style="pointer-events:none">PROFESI</text>
+            <text x="468" y="295" text-anchor="middle" font-size="10" fill="#7A4400" style="pointer-events:none">Bisa &amp; dibayar</text>
+            <text x="310" y="414" text-anchor="middle" font-size="11" font-weight="800" fill="#0A4A38" style="pointer-events:none">VOKASI</text>
+            <text x="310" y="429" text-anchor="middle" font-size="10" fill="#0A4A38" style="pointer-events:none">Perlu &amp; dibayar</text>
+            <text x="152" y="280" text-anchor="middle" font-size="11" font-weight="800" fill="#0A3560" style="pointer-events:none">MISI</text>
+            <text x="152" y="295" text-anchor="middle" font-size="10" fill="#0A3560" style="pointer-events:none">Suka &amp; diperlukan</text>
+            <text x="310" y="263" text-anchor="middle" font-size="14" font-weight="800" fill="#1B3F6A" letter-spacing=".5" style="pointer-events:none">✦ IKIGAI</text>
+            <text x="310" y="281" text-anchor="middle" font-size="10.5" fill="#1B6FAD" font-weight="700" style="pointer-events:none">Teknik Informatika</text>
+            <text x="310" y="300" text-anchor="middle" font-size="18" font-weight="800" fill="#1B6FAD" style="pointer-events:none">87%</text>
+          </svg>
+          <div id="ik-panel" class="ik-panel" style="margin-top:16px">
+            <div style="display:flex;align-items:flex-start;gap:14px">
+              <div id="ik-panel-dot" style="width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px"></div>
+              <div><div id="ik-panel-title" style="font-size:14px;font-weight:700;margin-bottom:5px"></div><div id="ik-panel-body" style="font-size:13px;color:var(--txt2);line-height:1.7"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end dp-dashboard -->
+
+
+      <!-- ─────────────────────────────────────────────
+           PAGE 2: PROFIL TES
+      ───────────────────────────────────────────── -->
+      <div id="dp-profil" class="dash-page">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+          <div>
+            <div style="font-size:26px;font-weight:800;letter-spacing:-.7px;color:var(--txt);margin-bottom:3px">Profil Tes Psikometri</div>
+            <div style="font-size:13px;color:var(--txt3)">TIKI · LAI · TALITA — hasil tes 14 Mei 2025</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <div style="background:var(--blue-l);color:var(--blue);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700">IQ 115</div>
+            <div style="background:var(--vio-l);color:var(--vio);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700">GTQ 88</div>
+            <div style="background:var(--org-l);color:var(--org);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700">Holland I</div>
+          </div>
+        </div>
+
+        <div class="pg-card">
+        <div class="tabs2">
+          <div class="tab2 on" onclick="switchTab('t-tiki',this)">TIKI — Kecerdasan</div>
+          <div class="tab2" onclick="switchTab('t-lai',this)">LAI — Belajar</div>
+          <div class="tab2" onclick="switchTab('t-talita',this)">TALITA — Minat</div>
+        </div>
+
+        <!-- TIKI pane -->
+        <div id="t-tiki" class="tab-pane on">
+          <div style="display:grid;grid-template-columns:1fr 200px;gap:32px;align-items:start">
+            <div>
+              <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:16px">Psikogram — Distribusi Dimensi</div>
+              <div class="psi-row"><div class="psi-lbl">Berhitung</div><div class="psi-track"><div class="psi-fill" style="width:60%;background:var(--blue)"></div></div><div class="psi-score">18/30</div></div>
+              <div class="psi-row"><div class="psi-lbl">Gabungan</div><div class="psi-track"><div class="psi-fill" style="width:67%;background:var(--blue)"></div></div><div class="psi-score">20/30</div></div>
+              <div class="psi-row"><div class="psi-lbl">Hubungan</div><div class="psi-track"><div class="psi-fill" style="width:53%;background:var(--blue)"></div></div><div class="psi-score">16/30</div></div>
+              <div class="psi-row"><div class="psi-lbl">Abstraksi ★</div><div class="psi-track"><div class="psi-fill" style="width:77%;background:var(--vio)"></div></div><div class="psi-score" style="color:var(--vio)">23/30</div></div>
+              <div style="margin-top:16px;font-size:13px;color:var(--txt3);line-height:1.7">Dimensi abstraksi dan logika menonjol — kemampuan pemrosesan pola tinggi, cocok untuk bidang rekayasa dan sains komputer.</div>
+            </div>
+            <div style="text-align:center;padding-top:4px">
+              <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:8px">IQ Total</div>
+              <div style="font-size:64px;font-weight:800;color:var(--blue);line-height:1">115</div>
+              <div style="font-size:12px;color:var(--txt3);margin-top:6px">Bright Normal<br>Persentil 84</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAI pane -->
+        <div id="t-lai" class="tab-pane">
+          <div style="display:grid;grid-template-columns:1fr 200px;gap:32px;align-items:start">
+            <div>
+              <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:16px">Growth &amp; Talent Quotient</div>
+              <div style="font-size:13px;color:var(--txt2);line-height:1.75;max-width:480px">GTQ mengukur kecepatan dan kemandirian dalam menyerap konsep baru. Skor 88 berarti kamu termasuk kelompok yang mampu belajar secara mandiri dengan cepat — relevan untuk menghadapi materi SNBT yang luas tanpa selalu bergantung pada bimbingan.</div>
+              <div style="margin-top:20px;font-size:13px;color:var(--txt2)">Implikasi: cukup gunakan 1–2 sumber belajar yang tepat secara konsisten, dibanding mengikuti banyak bimbel sekaligus.</div>
+            </div>
+            <div style="text-align:center;padding-top:4px">
+              <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:8px">GTQ</div>
+              <div style="font-size:64px;font-weight:800;color:var(--vio);line-height:1">88</div>
+              <div style="font-size:12px;color:var(--txt3);margin-top:6px">Tinggi<br>Belajar mandiri</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TALITA pane -->
+        <div id="t-talita" class="tab-pane">
+          <div style="display:grid;grid-template-columns:1fr 200px;gap:32px;align-items:start">
+            <div>
+              <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:16px">Holland Code — Tipe Minat Karir</div>
+              <div style="font-size:13px;color:var(--txt2);line-height:1.75;max-width:480px">Tipe <strong>Investigative</strong> artinya kamu menyukai pemecahan masalah, analisis, dan eksplorasi ide-ide yang kompleks. Kamu lebih suka bekerja dengan konsep dan data daripada dengan manusia secara langsung, dan cenderung menikmati pekerjaan yang membutuhkan logika dan ketelitian.</div>
+              <div style="margin-top:16px;font-size:13px;color:var(--txt2)">Match kuat: riset, rekayasa, ilmu komputer, matematika, sains.</div>
+            </div>
+            <div style="text-align:center;padding-top:4px">
+              <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:8px">Holland Type</div>
+              <div style="font-size:64px;font-weight:800;color:var(--org);line-height:1">I</div>
+              <div style="font-size:12px;color:var(--txt3);margin-top:6px">Investigative<br>Analytical</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:8px"></div>
+        </div><!-- end pg-card profil -->
+      </div><!-- end dp-profil -->
+
+
+      <!-- ─────────────────────────────────────────────
+           PAGE 3: REKOMENDASI
+      ───────────────────────────────────────────── -->
+      <div id="dp-rekom" class="dash-page">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+          <div>
+            <div style="font-size:26px;font-weight:800;letter-spacing:-.7px;color:var(--txt);margin-bottom:3px">Rekomendasi Jurusan</div>
+            <div style="font-size:13px;color:var(--txt3)">Berdasarkan profil psikometri · tryout SNBT · Ikigai</div>
+          </div>
+          <div style="background:var(--teal-l);color:var(--teal);border-radius:20px;padding:8px 18px;font-size:12px;font-weight:700">4 jurusan cocok</div>
+        </div>
+
+        <!-- Expandable reko cards -->
+        <div>
+          <!-- #1 -->
+          <div class="rk-card2" id="rk1">
+            <div class="rk-card2-hdr" onclick="toggleRk('rk1')">
+              <span class="rk2-rank">#1</span>
+              <span class="rk2-name">Teknik Informatika</span>
+              <span class="rk2-score">87%</span>
+              <span class="rk2-arrow">▼</span>
+            </div>
+            <div class="rk2-body">
+              <div class="rk2-why">IQ 115 + dimensi abstraksi tinggi cocok dengan logika komputasi. Tipe Investigative (TALITA) paling kuat overlap dengan TI. Gap PM paling besar — bisa ditutup dengan latihan terstruktur.</div>
+              <div class="chips" style="margin-bottom:12px">
+                <span class="chip" onclick="showCampusRk('ITS Surabaya','#0A3D7A','ITS')"><span class="av" style="background:#0A3D7A">ITS</span> ITS</span>
+                <span class="chip" onclick="showCampusRk('Univ. Brawijaya','#C03030','UB')"><span class="av" style="background:#C03030">UB</span> Unibraw</span>
+                <span class="chip" onclick="showCampusRk('Telkom University','#B03090','Tel')"><span class="av" style="background:#B03090">Tel</span> Telkom</span>
+                <span class="chip" onclick="showCampusRk('Binus University','#E06020','BNS')"><span class="av" style="background:#E06020">BNS</span> Binus</span>
+              </div>
+              <div id="camp-rk-1" class="camp-expand"></div>
+            </div>
+          </div>
+
+          <!-- #2 -->
+          <div class="rk-card2" id="rk2">
+            <div class="rk-card2-hdr" onclick="toggleRk('rk2')">
+              <span class="rk2-rank">#2</span>
+              <span class="rk2-name">Sistem Informasi</span>
+              <span class="rk2-score">74%</span>
+              <span class="rk2-arrow">▼</span>
+            </div>
+            <div class="rk2-body">
+              <div class="rk2-why">Kombinasi teknis + manajerial cocok untuk yang suka konteks bisnis. Persaingan masuk sedikit lebih rendah dari TI, dengan prospek karir serupa di sektor fintech dan enterprise.</div>
+              <div class="chips" style="margin-bottom:12px">
+                <span class="chip" onclick="showCampusRk('Univ. Brawijaya','#C03030','UB')"><span class="av" style="background:#C03030">UB</span> Unibraw</span>
+                <span class="chip" onclick="showCampusRk('Telkom University','#B03090','Tel')"><span class="av" style="background:#B03090">Tel</span> Telkom</span>
+                <span class="chip" onclick="showCampusRk('Binus University','#E06020','BNS')"><span class="av" style="background:#E06020">BNS</span> Binus</span>
+              </div>
+              <div id="camp-rk-2" class="camp-expand"></div>
+            </div>
+          </div>
+
+          <!-- #3 -->
+          <div class="rk-card2" id="rk3">
+            <div class="rk-card2-hdr" onclick="toggleRk('rk3')">
+              <span class="rk2-rank">#3</span>
+              <span class="rk2-name">Data Science</span>
+              <span class="rk2-score">71%</span>
+              <span class="rk2-arrow">▼</span>
+            </div>
+            <div class="rk2-body">
+              <div class="rk2-why">Bidang yang tumbuh cepat, sangat butuh kemampuan analitik dan abstraksi tinggi. Cocok dengan profil TIKI-mu, terutama dimensi abstraksi. Prodi baru — kompetisi lebih rendah, gaji di atas rata-rata.</div>
+              <div class="chips" style="margin-bottom:12px">
+                <span class="chip" onclick="showCampusRk('Binus University','#E06020','BNS')"><span class="av" style="background:#E06020">BNS</span> Binus</span>
+                <span class="chip" onclick="showCampusRk('Pradita University','#306090','PU')"><span class="av" style="background:#306090">PU</span> Pradita</span>
+              </div>
+              <div id="camp-rk-3" class="camp-expand"></div>
+            </div>
+          </div>
+
+          <!-- #4 -->
+          <div class="rk-card2" id="rk4">
+            <div class="rk-card2-hdr" onclick="toggleRk('rk4')">
+              <span class="rk2-rank">#4</span>
+              <span class="rk2-name">Teknik Elektro</span>
+              <span class="rk2-score">68%</span>
+              <span class="rk2-arrow">▼</span>
+            </div>
+            <div class="rk2-body">
+              <div class="rk2-why">Fondasi keras untuk masuk ke embedded systems, IoT, dan hardware engineering. Butuh kekuatan PM yang lebih tinggi — satu alasan ini di posisi #4. Dengan rencana aksi PM, bisa jadi pilihan yang kuat.</div>
+              <div class="chips" style="margin-bottom:12px">
+                <span class="chip" onclick="showCampusRk('ITS Surabaya','#0A3D7A','ITS')"><span class="av" style="background:#0A3D7A">ITS</span> ITS</span>
+                <span class="chip" onclick="showCampusRk('Univ. Indonesia','#FFCC00','UI')"><span class="av" style="background:#FFCC00;color:#333">UI</span> UI</span>
+              </div>
+              <div id="camp-rk-4" class="camp-expand"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shared campus panel (populated by showCampusRk) -->
+        <div id="campus-panel-rk" style="display:none;margin:12px 0">
+          <div style="background:var(--sur);border:1px solid var(--blue-b);border-radius:var(--r2);overflow:hidden">
+            <div id="cp-hdr-rk" class="camp-hdr"></div>
+            <div style="padding:20px;display:grid;grid-template-columns:1fr 260px;gap:20px">
+              <div>
+                <div class="comp-bar-wrap"><div class="comp-bar"><div class="comp-marker" style="left:32%"><div style="position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--blue-d);font-weight:700;white-space:nowrap">▲ Posisimu</div></div></div><div class="comp-labels"><span>Rendah</span><span style="color:var(--blue-d);font-weight:700">32% dari bawah</span><span>Tinggi</span></div></div>
+                <div style="margin-top:14px;font-size:13px;color:var(--txt2);line-height:1.6">68% calon pendaftar di atasmu sekarang. Dengan rencana aksi 3 bulan (+33 di PM), posisimu bisa naik ke kuartil kedua.</div>
+              </div>
+              <div>
+                <table class="dt"><tr><td>Passing grade</td><td class="hi">~710 UTBK</td></tr><tr><td>Daya tampung</td><td>120 kursi</td></tr><tr><td>UKT range</td><td>500rb–12,5jt</td></tr><tr><td>Akreditasi</td><td>Unggul</td></tr></table>
+                <button class="btn sec" onclick="document.getElementById('campus-panel-rk').style.display='none'" style="margin-top:12px;font-size:12px">Tutup</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:60px"></div>
+      </div><!-- end dp-rekom -->
+
+
+      <!-- ─────────────────────────────────────────────
+           PAGE 4: RENCANA AKSI
+      ───────────────────────────────────────────── -->
+      <div id="dp-rencana" class="dash-page">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+          <div>
+            <div style="font-size:26px;font-weight:800;letter-spacing:-.7px;color:var(--txt);margin-bottom:3px">Rencana Aksi</div>
+            <div style="font-size:13px;color:var(--txt3)">Target: Teknik Informatika UB · passing grade ~700</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <div style="background:var(--org-l);color:var(--org);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700">Skor ~630</div>
+            <div style="background:var(--blue-l);color:var(--blue);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700">Target ~700</div>
+            <div style="background:var(--bg);color:var(--txt2);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700">3 bulan</div>
+          </div>
+        </div>
+
+        <!-- Target strip -->
+        <div class="pg-card" style="display:flex;gap:28px;padding:18px 24px;font-size:13px;flex-wrap:wrap;margin-bottom:16px">
+          <div><span style="color:var(--txt3)">Skor sekarang</span> <strong style="color:var(--org)">~630</strong></div>
+          <div><span style="color:var(--txt3)">Target</span> <strong style="color:var(--blue)">~700</strong></div>
+          <div><span style="color:var(--txt3)">Gap total</span> <strong>+70 poin</strong></div>
+          <div><span style="color:var(--txt3)">Waktu</span> <strong>3 bulan</strong></div>
+        </div>
+
+        <div class="pg-card">
+        <!-- Mini gap priority bars: derived from gap analysis -->
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--txt3);margin-bottom:14px">Prioritas berdasarkan gap terbesar</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 32px;margin-bottom:32px">
+          <div class="gvr">
+            <span class="gvr-lbl" style="color:var(--org)">PM</span>
+            <div class="gvr-track">
+              <div class="gvr-pot" style="width:88%;background:var(--org)"></div>
+              <div class="gvr-act" style="width:55%;background:var(--org)"></div>
+            </div>
+            <div class="gvr-info" style="color:var(--org)">gap <strong>+33</strong></div>
+          </div>
+          <div class="gvr">
+            <span class="gvr-lbl">PPU</span>
+            <div class="gvr-track">
+              <div class="gvr-pot" style="width:78%;background:var(--blue)"></div>
+              <div class="gvr-act" style="width:50%;background:var(--blue)"></div>
+            </div>
+            <div class="gvr-info" style="color:var(--blue)">gap <strong>+28</strong></div>
+          </div>
+          <div class="gvr">
+            <span class="gvr-lbl">PBM</span>
+            <div class="gvr-track">
+              <div class="gvr-pot" style="width:78%;background:var(--blue)"></div>
+              <div class="gvr-act" style="width:50%;background:var(--blue)"></div>
+            </div>
+            <div class="gvr-info" style="color:var(--blue)">gap <strong>+28</strong></div>
+          </div>
+          <div class="gvr" style="border-bottom:none">
+            <span class="gvr-lbl">PU</span>
+            <div class="gvr-track">
+              <div class="gvr-pot" style="width:88%;background:var(--blue)"></div>
+              <div class="gvr-act" style="width:63%;background:var(--blue)"></div>
+            </div>
+            <div class="gvr-info" style="color:var(--blue)">gap <strong>+25</strong></div>
+          </div>
+        </div>
+
+        <!-- Accordion by priority -->
+        <div class="acc">
+          <div class="acc-item open" id="acc-1">
+            <div class="acc-trigger" onclick="toggleAcc('acc-1')">
+              <div style="display:flex;align-items:center"><div class="acc-num">1</div><span>Bulan 1 — Fokus PM <span style="font-size:11px;font-weight:400;color:var(--txt3)">(gap terbesar +33)</span></span></div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="font-size:12px;color:var(--org);font-weight:700">55 → 70</span>
+                <span class="acc-arrow">▼</span>
+              </div>
+            </div>
+            <div class="acc-body">
+              <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+                <div style="margin-bottom:6px">• Latihan PM 45 menit/hari — soal berderet angka &amp; logika aritmetika</div>
+                <div style="margin-bottom:6px">• Bank soal PM terstruktur 2× per minggu (soal baru, bukan ulang)</div>
+                <div style="margin-bottom:6px">• Tryout mini TPS setiap akhir minggu, review semua kesalahan</div>
+                <div>• Target akhir Bulan 1: PM ≥ 70 (+15 dari baseline 55)</div>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item" id="acc-2">
+            <div class="acc-trigger" onclick="toggleAcc('acc-2')">
+              <div style="display:flex;align-items:center"><div class="acc-num">2</div><span>Bulan 2 — PPU + PBM + PU <span style="font-size:11px;font-weight:400;color:var(--txt3)">(gap +28 / +28 / +25)</span></span></div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="font-size:12px;color:var(--blue);font-weight:700">+81 poin kumulatif</span>
+                <span class="acc-arrow">▼</span>
+              </div>
+            </div>
+            <div class="acc-body">
+              <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+                <div style="margin-bottom:6px">• Baca artikel sains &amp; opini ringan 20 menit/hari (bantu PBM + PPU)</div>
+                <div style="margin-bottom:6px">• Latihan argumen logis dan wacana bacaan 3× per minggu</div>
+                <div style="margin-bottom:6px">• Lanjutkan latihan PM untuk mempertahankan gain Bulan 1</div>
+                <div>• Tryout penuh 1× per minggu — track progress tiap subtes</div>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item" id="acc-3">
+            <div class="acc-trigger" onclick="toggleAcc('acc-3')">
+              <div style="display:flex;align-items:center"><div class="acc-num">3</div><span>Bulan 3 — Simulasi &amp; Konsolidasi</span></div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="font-size:12px;color:var(--teal);font-weight:700">Target SNBT ≥ 700</span>
+                <span class="acc-arrow">▼</span>
+              </div>
+            </div>
+            <div class="acc-body">
+              <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+                <div style="margin-bottom:6px">• Tryout simulasi kondisi ujian penuh 2× per minggu (waktu ketat)</div>
+                <div style="margin-bottom:6px">• Review subtes yang masih di bawah target — fokus kualitas bukan kuantitas</div>
+                <div style="margin-bottom:6px">• Sesi strategi: manajemen waktu &amp; urutan subtes optimal</div>
+                <div>• Final check 1 minggu sebelum ujian — jangan belajar materi baru</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weekly checklist -->
+        <div style="margin-top:28px;padding:22px 24px;background:var(--sur);border-radius:var(--r2);box-shadow:var(--sh2)">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--txt3);margin-bottom:14px">✓ Checklist Minggu Ini</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--txt2)">
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input type="checkbox" style="width:15px;height:15px;accent-color:var(--blue)"> Belajar PM 45 menit hari ini</label>
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input type="checkbox" style="width:15px;height:15px;accent-color:var(--blue)"> Kerjakan 20 soal bank PM</label>
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input type="checkbox" style="width:15px;height:15px;accent-color:var(--blue)"> Tryout mini akhir minggu ini</label>
+          </div>
+        </div>
+
+        </div><!-- end pg-card rencana -->
+      </div><!-- end dp-rencana -->
+
+      </div><!-- end rpt-wrap -->
+    </main>
+  </div>
+</div>
+
+<script>
+// ── screen navigation (onboarding) ──────────────────────
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el){el.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+}
+
+// ── open dashboard shell + show first page ───────────────
+function openDash(){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('dash-shell').classList.add('active');
+  switchPage('dp-dashboard','lnk-dash');
+}
+// alias for legacy onboarding buttons
+function goDash(){ openDash(); }
+
+// ── switch between 4 dashboard pages ────────────────────
+function switchPage(pageId, linkId){
+  document.querySelectorAll('.dash-page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.ds-link').forEach(l=>l.classList.remove('on'));
+  const page=document.getElementById(pageId);
+  const link=document.getElementById(linkId);
+  if(page) page.classList.add('on');
+  if(link) link.classList.add('on');
+  const main=document.getElementById('dash-main');
+  if(main) main.scrollTo({top:0,behavior:'instant'});
+}
+
+// ── campus panel builder ─────────────────────────────────
+function buildCampusHdr(id,name,color,initials){
+  const hdr=document.getElementById(id);
+  if(!hdr)return;
+  hdr.style.background=color;
+  hdr.innerHTML=`<div style="display:flex;align-items:center;gap:12px;padding:16px 20px">
+    <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff">${initials}</div>
+    <div><div style="font-size:15px;font-weight:800;color:#fff">Teknik Informatika · ${name}</div>
+    <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:2px">Jalur SNBT · Perlu usaha</div></div></div>`;
+}
+function showCampus(name,color,initials){
+  buildCampusHdr('cp-hdr',name,color,initials);
+  const p=document.getElementById('campus-panel');
+  p.style.display='block';
+  p.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function showCampusRk(name,color,initials){
+  buildCampusHdr('cp-hdr-rk',name,color,initials);
+  const p=document.getElementById('campus-panel-rk');
+  p.style.display='block';
+  p.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// ── generic expand/collapse ──────────────────────────────
+function toggleEl(id,btnId){
+  const el=document.getElementById(id);
+  const btn=btnId?document.getElementById(btnId):null;
+  const open=el.style.display==='none'||el.style.display==='';
+  el.style.display=open?'block':'none';
+  if(btn){
+    const arrow=btn.querySelector('.sm-arrow');
+    if(arrow)arrow.style.transform=open?'rotate(180deg)':'rotate(0deg)';
+  }
+}
+
+// ── rekomendasi expandable cards ────────────────────────
+function toggleRk(id){
+  const card=document.getElementById(id);
+  if(!card)return;
+  // close siblings
+  document.querySelectorAll('.rk-card2').forEach(c=>{
+    if(c.id!==id) c.classList.remove('open');
+  });
+  card.classList.toggle('open');
+  // hide campus panel if closing
+  if(!card.classList.contains('open')){
+    document.getElementById('campus-panel-rk').style.display='none';
+  }
+}
+
+// ── tab switching (Profil Tes page) ─────────────────────
+function switchTab(paneId,tabEl){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab2').forEach(t=>t.classList.remove('on'));
+  document.getElementById(paneId).classList.add('on');
+  tabEl.classList.add('on');
+}
+
+// ── accordion (Rencana Aksi page) ────────────────────────
+function toggleAcc(id){
+  document.getElementById(id).classList.toggle('open');
+}
+
+// ── ikigai circle click ──────────────────────────────────
+const ikData={
+  love:{color:'#1B6FAD',title:'Apa yang Kamu Suka',body:'Berdasarkan TALITA, kamu bertipe Investigative — menyukai analisis, pemecahan masalah, dan eksplorasi pola. Kamu secara alami tertarik ke domain yang memerlukan pemikiran logis dan eksperimentasi.'},
+  good:{color:'#6D3EAD',title:'Apa yang Kamu Bisa',body:'IQ 115 (Bright Normal, P84) dengan dimensi abstraksi yang menonjol. LAI 88 menunjukkan kemampuan belajar mandiri yang tinggi. Profil ini sangat cocok untuk bidang yang memerlukan pemrosesan konsep kompleks.'},
+  need:{color:'#0F6E56',title:'Apa yang Dunia Butuhkan',body:'AI, transformasi digital, dan software engineering adalah kebutuhan terbesar ekonomi Indonesia saat ini. Pemerintah menargetkan 9 juta talenta digital pada 2030 — permintaan jauh melebihi pasokan.'},
+  paid:{color:'#C99A00',title:'Apa yang Bisa Dibayar',body:'IT adalah bidang dengan rata-rata gaji tertinggi di Indonesia. Entry-level software engineer: Rp 8–15 jt/bln. Senior: Rp 25–60 jt/bln. Permintaan terus tumbuh, risiko pengangguran sangat rendah.'},
+  center:{color:'#1B3F6A',title:'✦ Ikigai — Teknik Informatika (87%)',body:'TI memenuhi keempat dimensi sekaligus: kamu menyukainya (investigatif), kamu bisa (IQ + LAI tinggi), dunia membutuhkan (transformasi digital), dan bisa menghasilkan (gaji tertinggi). Ini adalah sweet spot yang langka.'},
+};
+function ikClick(zone){
+  const d=ikData[zone];
+  if(!d)return;
+  const panel=document.getElementById('ik-panel');
+  document.getElementById('ik-panel-dot').style.background=d.color;
+  document.getElementById('ik-panel-title').textContent=d.title;
+  document.getElementById('ik-panel-title').style.color=d.color;
+  document.getElementById('ik-panel-body').textContent=d.body;
+  panel.classList.add('on');
+  ['love','good','need','paid'].forEach(k=>{
+    const c=document.getElementById('ik-'+k);
+    if(c) c.style.fillOpacity=(zone===k||zone==='center')?'.75':'.25';
+  });
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// ── onboarding helpers ───────────────────────────────────
+function doKode(){
+  const v=((document.getElementById('kode')||{}).value||'').replace(/[^a-zA-Z0-9]/g,'').toUpperCase();
+  go(v.length>=4 ? 's-a3' : 's-aerr');
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')go('s-start');});
+</script>
+</body>
+</html>
