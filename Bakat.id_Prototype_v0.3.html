@@ -90,7 +90,7 @@ body{background:var(--bg);color:var(--txt)}
   display:flex;align-items:flex-start;gap:10px;margin-bottom:16px}
 .alert .ai{font-size:16px;flex-shrink:0;margin-top:1px}
 .alert strong{display:block;font-weight:700;margin-bottom:2px}
-.al-ok{background:var(--teal-l);color:var(--teal);border-left:3px solid var(--teal)}
+.al-ok{background:var(--blue-l);color:var(--blue);border-left:3px solid var(--blue)}
 .al-err{background:var(--red-l);color:var(--red);border-left:3px solid var(--red)}
 .al-warn{background:var(--org-l);color:var(--org);border-left:3px solid var(--org)}
 .al-info{background:var(--blue-l);color:var(--blue);border-left:3px solid var(--blue)}
@@ -115,7 +115,7 @@ body{background:var(--bg);color:var(--txt)}
 .step{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:8px;font-size:13px}
 .step .si{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;
   justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-.step.done{background:var(--teal-l);color:var(--teal)}.step.done .si{background:var(--teal);color:#fff}
+.step.done{background:var(--blue-l);color:var(--blue)}.step.done .si{background:var(--blue);color:#fff}
 .step.doing{background:var(--blue-l);color:var(--blue)}.step.doing .si{background:var(--blue);color:#fff}
 .step.todo{background:var(--bg);color:var(--txt3)}.step.todo .si{background:var(--brd);color:var(--txt3)}
 
@@ -235,14 +235,14 @@ body{background:var(--bg);color:var(--txt)}
 .gap-row{display:flex;align-items:center;gap:14px;padding:10px 14px;
   background:var(--sur);border:1px solid var(--brd);border-radius:8px;margin-bottom:7px}
 .gap-row.hi{border-left:3px solid var(--org);background:var(--org-l)}
-.gap-row.ok{border-left:3px solid var(--teal);background:var(--teal-l)}
+.gap-row.ok{border-left:3px solid var(--blue);background:var(--blue-l)}
 .gap-lbl{font-size:12px;font-weight:700;width:40px;color:var(--txt2);flex-shrink:0}
-.gap-lbl.hi{color:var(--org)}.gap-lbl.ok{color:var(--teal)}
+.gap-lbl.hi{color:var(--org)}.gap-lbl.ok{color:var(--blue)}
 .gap-track{flex:1;height:10px;background:var(--brd);border-radius:5px;overflow:hidden}
 .gap-fill{height:100%;border-radius:5px;transition:width .6s ease}
-.gap-fill.hi{background:var(--org)}.gap-fill.ok{background:var(--teal)}.gap-fill.mid{background:var(--blue)}
+.gap-fill.hi{background:var(--org)}.gap-fill.ok{background:var(--blue)}.gap-fill.mid{background:var(--blue)}
 .gap-score{font-size:12px;font-weight:700;color:var(--txt2);width:80px;text-align:right;flex-shrink:0}
-.gap-score.hi{color:var(--org)}.gap-score.ok{color:var(--teal)}
+.gap-score.hi{color:var(--org)}.gap-score.ok{color:var(--blue)}
 
 /* psi bar */
 .psi-row{display:flex;align-items:center;gap:14px;margin-bottom:10px;
@@ -268,9 +268,9 @@ body{background:var(--bg);color:var(--txt)}
 .ik .ik-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;opacity:.7}
 .ik .ik-t{font-size:13px;line-height:1.6;font-weight:500}
 .ik-a{background:var(--blue-l);color:var(--blue-d)}
-.ik-b{background:var(--teal-l);color:#0A5544}
-.ik-c{background:var(--vio-l);color:var(--vio)}
-.ik-d{background:var(--teal-l);color:#0A5544}
+.ik-b{background:var(--blue-l);color:var(--blue)}
+.ik-c{background:var(--blue-l);color:var(--blue)}
+.ik-d{background:var(--blue-l);color:var(--blue)}
 
 /* competitive bar */
 .comp-bar-wrap{margin:14px 0 20px}
@@ -317,7 +317,7 @@ section[id^="sec-"]{scroll-margin-top:20px}
 .tl-sub{font-size:13px;color:var(--txt2);line-height:1.7}
 .tl-item.act .tl-dot{background:var(--org);border-color:var(--org);color:#fff}
 .tl-item.fut .tl-dot{background:var(--blue-l);border-color:var(--blue-b);color:var(--blue)}
-.tl-item.done .tl-dot{background:var(--teal);border-color:var(--teal);color:#fff}
+.tl-item.done .tl-dot{background:var(--blue);border-color:var(--blue);color:#fff}
 
 /* campus detail */
 .camp-hdr{background:var(--grad);border-radius:var(--r2) var(--r2) 0 0;padding:20px 22px;color:#fff}
@@ -326,7 +326,7 @@ section[id^="sec-"]{scroll-margin-top:20px}
 .status-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;
   border-radius:20px;font-size:12px;font-weight:700;margin-top:10px}
 .sp-warn{background:var(--org-l);color:var(--org);border:1.5px solid var(--org)}
-.sp-ok{background:var(--teal-l);color:var(--teal);border:1.5px solid var(--teal)}
+.sp-ok{background:var(--blue-l);color:var(--blue);border:1.5px solid var(--blue)}
 
 /* ── REPORT STYLES ── */
 .rpt-wrap{padding:0;max-width:none}
@@ -482,11 +482,11 @@ section[id^="sec-"]{scroll-margin-top:20px}
           <div style="font-size:12px;color:var(--txt2);line-height:1.5">Dapat kode aktivasi setelah ikut tryout di bimbel. Data tryout langsung ter-import.</div>
           <div style="font-size:12px;font-weight:700;color:var(--blue);margin-top:10px">Masuk via kode →</div>
         </div>
-        <div onclick="go('s-b1')" style="background:var(--teal-l);border:2px solid var(--teal);border-radius:var(--r2);padding:20px;cursor:pointer;transition:all .15s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        <div onclick="go('s-b1')" style="background:var(--blue-l);border:2px solid var(--blue);border-radius:var(--r2);padding:20px;cursor:pointer;transition:all .15s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
           <div style="font-size:24px;margin-bottom:10px">✏️</div>
-          <div style="font-size:14px;font-weight:800;color:#0A5544;margin-bottom:5px">Daftar sendiri</div>
+          <div style="font-size:14px;font-weight:800;color:var(--blue-d);margin-bottom:5px">Daftar sendiri</div>
           <div style="font-size:12px;color:var(--txt2);line-height:1.5">Temukan Bakat.id secara mandiri. Input nilai tryout secara manual.</div>
-          <div style="font-size:12px;font-weight:700;color:var(--teal);margin-top:10px">Daftar gratis →</div>
+          <div style="font-size:12px;font-weight:700;color:var(--blue);margin-top:10px">Daftar gratis →</div>
         </div>
       </div>
       <div class="or"><span>atau langsung ke laporan demo</span></div>
@@ -665,10 +665,10 @@ section[id^="sec-"]{scroll-margin-top:20px}
       <div style="margin-top:28px;background:var(--bg);border-radius:var(--r2);padding:16px">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:10px">Yang kamu dapatkan</div>
         <div style="display:flex;flex-direction:column;gap:7px">
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--teal);font-weight:700">✓</span> Tes psikometri lengkap (TIKI + LAI + TALITA)</div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--teal);font-weight:700">✓</span> Gap analysis tryout vs potensi</div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--teal);font-weight:700">✓</span> Top 4 rekomendasi jurusan + kampus</div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--teal);font-weight:700">✓</span> Rencana aksi 3 bulan SNBT</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--blue);font-weight:700">✓</span> Tes psikometri lengkap (TIKI + LAI + TALITA)</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--blue);font-weight:700">✓</span> Gap analysis tryout vs potensi</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--blue);font-weight:700">✓</span> Top 4 rekomendasi jurusan + kampus</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2)"><span style="color:var(--blue);font-weight:700">✓</span> Rencana aksi 3 bulan SNBT</div>
         </div>
       </div>
     </div>
@@ -825,11 +825,11 @@ section[id^="sec-"]{scroll-margin-top:20px}
 <section id="s-c3" class="screen">
 <div style="min-height:100vh;background:#0D2340;display:flex;align-items:center;justify-content:center">
   <div style="text-align:center;max-width:420px">
-    <div style="width:80px;height:80px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 20px">✓</div>
+    <div style="width:80px;height:80px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 20px">✓</div>
     <div style="font-size:28px;font-weight:800;color:#fff;margin-bottom:8px">Semua Tes Selesai!</div>
     <div style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:32px">TIKI · LAI · TALITA sudah selesai dikerjakan.<br>Hasil sedang dikirim ke Bakat.id...</div>
     <div style="background:rgba(255,255,255,.08);border-radius:50px;height:10px;overflow:hidden;margin-bottom:8px">
-      <div style="width:100%;height:100%;background:var(--teal);border-radius:50px"></div>
+      <div style="width:100%;height:100%;background:var(--blue);border-radius:50px"></div>
     </div>
     <div style="font-size:12px;color:rgba(255,255,255,.35);margin-bottom:32px">100% · Terkirim ke Bakat.id</div>
     <button class="btn pri" onclick="go('s-c4')">Kembali ke Bakat.id →</button>
@@ -934,9 +934,9 @@ section[id^="sec-"]{scroll-margin-top:20px}
           <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-profil','lnk-profil')">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
               <div style="font-size:11px;color:var(--txt3);font-weight:600">Learning Agility</div>
-              <div style="background:var(--vio-l);color:var(--vio);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">LAI</div>
+              <div style="background:var(--blue-l);color:var(--blue);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">LAI</div>
             </div>
-            <div style="font-size:48px;font-weight:800;color:var(--vio);letter-spacing:-3px;line-height:1;margin-bottom:6px">88</div>
+            <div style="font-size:48px;font-weight:800;color:var(--blue);letter-spacing:-3px;line-height:1;margin-bottom:6px">88</div>
             <div style="font-size:12px;color:var(--txt3)">Mandiri · Cepat serap</div>
           </div>
           <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-profil','lnk-profil')">
@@ -950,9 +950,9 @@ section[id^="sec-"]{scroll-margin-top:20px}
           <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-rekom','lnk-rekom')">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
               <div style="font-size:11px;color:var(--txt3);font-weight:600">Match Jurusan</div>
-              <div style="background:var(--teal-l);color:var(--teal);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">#1</div>
+              <div style="background:var(--blue-l);color:var(--blue);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">#1</div>
             </div>
-            <div style="font-size:48px;font-weight:800;color:var(--teal);letter-spacing:-3px;line-height:1;margin-bottom:6px">87%</div>
+            <div style="font-size:48px;font-weight:800;color:var(--blue);letter-spacing:-3px;line-height:1;margin-bottom:6px">87%</div>
             <div style="font-size:12px;color:var(--txt3)">Teknik Informatika</div>
           </div>
         </div>
@@ -991,7 +991,7 @@ section[id^="sec-"]{scroll-margin-top:20px}
               </div>
               <div style="padding:13px 14px;background:var(--bg);border-radius:12px;border:1px solid var(--brd)">
                 <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:5px">UKT range</div>
-                <div style="font-size:18px;font-weight:800;color:var(--teal);letter-spacing:-.5px;line-height:1">500rb</div>
+                <div style="font-size:18px;font-weight:800;color:var(--blue);letter-spacing:-.5px;line-height:1">500rb</div>
                 <div style="font-size:11px;color:var(--txt3);margin-top:3px">s/d 12,5jt</div>
               </div>
             </div>
@@ -1025,7 +1025,7 @@ section[id^="sec-"]{scroll-margin-top:20px}
               </div>
               <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--brd)">
                 <span style="font-size:12px;color:var(--txt2)">Sudah baik</span>
-                <span style="font-size:13px;font-weight:800;color:var(--teal)">PK, LBI ✓</span>
+                <span style="font-size:13px;font-weight:800;color:var(--blue)">PK, LBI ✓</span>
               </div>
               <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--brd)">
                 <span style="font-size:12px;color:var(--txt2)">Perlu kerja</span>
@@ -1123,14 +1123,14 @@ section[id^="sec-"]{scroll-margin-top:20px}
               <div class="gvr"><span class="gvr-lbl">PPU</span><div class="gvr-track"><div class="gvr-pot" style="width:78%;background:var(--org)"></div><div class="gvr-act" style="width:50%;background:var(--org)"></div></div><div class="gvr-info" style="color:var(--org)">50 → 78 · gap <strong>+28</strong></div></div>
               <div class="gvr"><span class="gvr-lbl">PBM</span><div class="gvr-track"><div class="gvr-pot" style="width:78%;background:var(--blue)"></div><div class="gvr-act" style="width:50%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">50 → 78 · gap <strong>+28</strong></div></div>
               <div class="gvr"><span class="gvr-lbl">PU</span><div class="gvr-track"><div class="gvr-pot" style="width:88%;background:var(--blue)"></div><div class="gvr-act" style="width:63%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">63 → 88 · gap <strong>+25</strong></div></div>
-              <div class="gvr"><span class="gvr-lbl">PK</span><div class="gvr-track"><div class="gvr-pot" style="width:90%;background:var(--teal)"></div><div class="gvr-act" style="width:90%;background:var(--teal)"></div></div><div class="gvr-info" style="color:var(--teal)">90 · sudah baik <strong>✓</strong></div></div>
-              <div class="gvr"><span class="gvr-lbl">LBI</span><div class="gvr-track"><div class="gvr-pot" style="width:80%;background:var(--teal)"></div><div class="gvr-act" style="width:80%;background:var(--teal)"></div></div><div class="gvr-info" style="color:var(--teal)">80 · sudah baik <strong>✓</strong></div></div>
+              <div class="gvr"><span class="gvr-lbl">PK</span><div class="gvr-track"><div class="gvr-pot" style="width:90%;background:var(--blue)"></div><div class="gvr-act" style="width:90%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">90 · sudah baik <strong>✓</strong></div></div>
+              <div class="gvr"><span class="gvr-lbl">LBI</span><div class="gvr-track"><div class="gvr-pot" style="width:80%;background:var(--blue)"></div><div class="gvr-act" style="width:80%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">80 · sudah baik <strong>✓</strong></div></div>
               <button class="show-more" id="gap-btn" onclick="toggleEl('gap-interp','gap-btn')" style="margin-top:14px">Apa artinya buat kamu? <span class="sm-arrow">↓</span></button>
               <div id="gap-interp" style="display:none;font-size:13px;color:var(--txt2);line-height:1.75;padding:14px 0">Penalaran Matematika (PM) adalah gap terbesarmu — selisih 33 poin antara skor tryout dan potensi yang terdeteksi dari tes TIKI. Ini bukan soal kemampuan, tapi masalah latihan. IQ 115-mu cukup untuk mencapai skor target; yang kurang hanyalah eksposur soal yang terstruktur.</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:0">
               <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--brd);font-size:13px"><span style="color:var(--txt2)">Gap terbesar</span><span style="font-weight:800;color:var(--org)">PM +33</span></div>
-              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--brd);font-size:13px"><span style="color:var(--txt2)">Sudah baik</span><span style="font-weight:800;color:var(--teal)">PK, LBI ✓</span></div>
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--brd);font-size:13px"><span style="color:var(--txt2)">Sudah baik</span><span style="font-weight:800;color:var(--blue)">PK, LBI ✓</span></div>
               <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--brd);font-size:13px"><span style="color:var(--txt2)">Perlu kerja</span><span style="font-weight:800">4 dari 6</span></div>
               <div style="display:flex;justify-content:space-between;padding:10px 0;font-size:13px"><span style="color:var(--txt2)">Potensi naik</span><span style="font-weight:800;color:var(--blue)">+100 poin</span></div>
             </div>
@@ -1149,7 +1149,7 @@ section[id^="sec-"]{scroll-margin-top:20px}
           <svg viewBox="0 0 660 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto" font-family="Inter,system-ui,sans-serif">
             <!-- four circles -->
             <circle id="ik-love" cx="210" cy="200" r="170" fill="#C8DEFA" fill-opacity=".55" stroke="#1B6FAD" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('love')"/>
-            <circle id="ik-good" cx="450" cy="200" r="170" fill="#DDD5FF" fill-opacity=".55" stroke="#6D3EAD" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('good')"/>
+            <circle id="ik-good" cx="450" cy="200" r="170" fill="#C8DEFA" fill-opacity=".55" stroke="#2579C6" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('good')"/>
             <circle id="ik-need" cx="210" cy="370" r="170" fill="#BBE8D8" fill-opacity=".55" stroke="#0F6E56" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('need')"/>
             <circle id="ik-paid" cx="450" cy="370" r="170" fill="#FAE4B2" fill-opacity=".55" stroke="#C99A00" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('paid')"/>
             <circle cx="330" cy="285" r="58" fill="white" fill-opacity=".9" stroke="#1B6FAD" stroke-width="2" stroke-dasharray="5 3" style="cursor:pointer" onclick="ikClick('center')"/>
@@ -1161,10 +1161,10 @@ section[id^="sec-"]{scroll-margin-top:20px}
             <text x="150" y="142" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1B6FAD" style="pointer-events:none">Pola &amp; abstraksi</text>
 
             <!-- GOOD — top-right private area (x=510, y=88–141) -->
-            <text x="510" y="88"  text-anchor="middle" font-size="9"    font-weight="800" fill="#4A1E8C" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU BISA</text>
-            <text x="510" y="108" text-anchor="middle" font-size="11.5" font-weight="600" fill="#6D3EAD" style="pointer-events:none">IQ 115 · Bright Normal</text>
-            <text x="510" y="125" text-anchor="middle" font-size="11.5" font-weight="600" fill="#6D3EAD" style="pointer-events:none">Abstraksi tinggi</text>
-            <text x="510" y="142" text-anchor="middle" font-size="11.5" font-weight="600" fill="#6D3EAD" style="pointer-events:none">Learning Agility 88</text>
+            <text x="510" y="88"  text-anchor="middle" font-size="9"    font-weight="800" fill="#1B3F6A" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU BISA</text>
+            <text x="510" y="108" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2579C6" style="pointer-events:none">IQ 115 · Bright Normal</text>
+            <text x="510" y="125" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2579C6" style="pointer-events:none">Abstraksi tinggi</text>
+            <text x="510" y="142" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2579C6" style="pointer-events:none">Learning Agility 88</text>
 
             <!-- NEED — bottom-left private area (x=150, y=438–471) -->
             <text x="150" y="438" text-anchor="middle" font-size="9"    font-weight="800" fill="#0A4A38" letter-spacing="1.2" style="pointer-events:none">DUNIA BUTUHKAN</text>
@@ -1216,7 +1216,7 @@ section[id^="sec-"]{scroll-margin-top:20px}
           </div>
           <div style="display:flex;gap:8px">
             <div style="background:var(--blue-l);color:var(--blue);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700">IQ 115</div>
-            <div style="background:var(--vio-l);color:var(--vio);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700">GTQ 88</div>
+            <div style="background:var(--blue-l);color:var(--blue);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700">GTQ 88</div>
             <div style="background:var(--org-l);color:var(--org);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700">Holland I</div>
           </div>
         </div>
@@ -1236,7 +1236,7 @@ section[id^="sec-"]{scroll-margin-top:20px}
               <div class="psi-row"><div class="psi-lbl">Berhitung</div><div class="psi-track"><div class="psi-fill" style="width:60%;background:var(--blue)"></div></div><div class="psi-score">18/30</div></div>
               <div class="psi-row"><div class="psi-lbl">Gabungan</div><div class="psi-track"><div class="psi-fill" style="width:67%;background:var(--blue)"></div></div><div class="psi-score">20/30</div></div>
               <div class="psi-row"><div class="psi-lbl">Hubungan</div><div class="psi-track"><div class="psi-fill" style="width:53%;background:var(--blue)"></div></div><div class="psi-score">16/30</div></div>
-              <div class="psi-row"><div class="psi-lbl">Abstraksi ★</div><div class="psi-track"><div class="psi-fill" style="width:77%;background:var(--vio)"></div></div><div class="psi-score" style="color:var(--vio)">23/30</div></div>
+              <div class="psi-row"><div class="psi-lbl">Abstraksi ★</div><div class="psi-track"><div class="psi-fill" style="width:77%;background:var(--blue)"></div></div><div class="psi-score" style="color:var(--blue)">23/30</div></div>
               <div style="margin-top:16px;font-size:13px;color:var(--txt3);line-height:1.7">Dimensi abstraksi dan logika menonjol — kemampuan pemrosesan pola tinggi, cocok untuk bidang rekayasa dan sains komputer.</div>
             </div>
             <div style="text-align:center;padding-top:4px">
@@ -1257,7 +1257,7 @@ section[id^="sec-"]{scroll-margin-top:20px}
             </div>
             <div style="text-align:center;padding-top:4px">
               <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:8px">GTQ</div>
-              <div style="font-size:64px;font-weight:800;color:var(--vio);line-height:1">88</div>
+              <div style="font-size:64px;font-weight:800;color:var(--blue);line-height:1">88</div>
               <div style="font-size:12px;color:var(--txt3);margin-top:6px">Tinggi<br>Belajar mandiri</div>
             </div>
           </div>
@@ -1293,7 +1293,7 @@ section[id^="sec-"]{scroll-margin-top:20px}
             <div style="font-size:26px;font-weight:800;letter-spacing:-.7px;color:var(--txt);margin-bottom:3px">Rekomendasi Jurusan</div>
             <div style="font-size:13px;color:var(--txt3)">Berdasarkan profil psikometri · tryout SNBT · Ikigai</div>
           </div>
-          <div style="background:var(--teal-l);color:var(--teal);border-radius:20px;padding:8px 18px;font-size:12px;font-weight:700">4 jurusan cocok</div>
+          <div style="background:var(--blue-l);color:var(--blue);border-radius:20px;padding:8px 18px;font-size:12px;font-weight:700">4 jurusan cocok</div>
         </div>
 
         <!-- Expandable reko cards -->
@@ -1497,7 +1497,7 @@ section[id^="sec-"]{scroll-margin-top:20px}
             <div class="acc-trigger" onclick="toggleAcc('acc-3')">
               <div style="display:flex;align-items:center"><div class="acc-num">3</div><span>Bulan 3 — Simulasi &amp; Konsolidasi</span></div>
               <div style="display:flex;align-items:center;gap:12px">
-                <span style="font-size:12px;color:var(--teal);font-weight:700">Target SNBT ≥ 700</span>
+                <span style="font-size:12px;color:var(--blue);font-weight:700">Target SNBT ≥ 700</span>
                 <span class="acc-arrow">▼</span>
               </div>
             </div>
@@ -1625,7 +1625,7 @@ function toggleAcc(id){
 // ── ikigai circle click ──────────────────────────────────
 const ikData={
   love:{color:'#1B6FAD',title:'Apa yang Kamu Suka',body:'Berdasarkan TALITA, kamu bertipe Investigative — menyukai analisis, pemecahan masalah, dan eksplorasi pola. Kamu secara alami tertarik ke domain yang memerlukan pemikiran logis dan eksperimentasi.'},
-  good:{color:'#6D3EAD',title:'Apa yang Kamu Bisa',body:'IQ 115 (Bright Normal, P84) dengan dimensi abstraksi yang menonjol. LAI 88 menunjukkan kemampuan belajar mandiri yang tinggi. Profil ini sangat cocok untuk bidang yang memerlukan pemrosesan konsep kompleks.'},
+  good:{color:'#2579C6',title:'Apa yang Kamu Bisa',body:'IQ 115 (Bright Normal, P84) dengan dimensi abstraksi yang menonjol. LAI 88 menunjukkan kemampuan belajar mandiri yang tinggi. Profil ini sangat cocok untuk bidang yang memerlukan pemrosesan konsep kompleks.'},
   need:{color:'#0F6E56',title:'Apa yang Dunia Butuhkan',body:'AI, transformasi digital, dan software engineering adalah kebutuhan terbesar ekonomi Indonesia saat ini. Pemerintah menargetkan 9 juta talenta digital pada 2030 — permintaan jauh melebihi pasokan.'},
   paid:{color:'#C99A00',title:'Apa yang Bisa Dibayar',body:'IT adalah bidang dengan rata-rata gaji tertinggi di Indonesia. Entry-level software engineer: Rp 8–15 jt/bln. Senior: Rp 25–60 jt/bln. Permintaan terus tumbuh, risiko pengangguran sangat rendah.'},
   center:{color:'#1B3F6A',title:'✦ Ikigai — Teknik Informatika (87%)',body:'TI memenuhi keempat dimensi sekaligus: kamu menyukainya (investigatif), kamu bisa (IQ + LAI tinggi), dunia membutuhkan (transformasi digital), dan bisa menghasilkan (gaji tertinggi). Ini adalah sweet spot yang langka.'},
