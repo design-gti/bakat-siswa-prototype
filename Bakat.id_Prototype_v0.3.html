@@ -948,13 +948,32 @@ section[id^="sec-"]{scroll-margin-top:20px}
             <div style="font-size:48px;font-weight:800;color:var(--org);letter-spacing:-3px;line-height:1;margin-bottom:6px">I</div>
             <div style="font-size:12px;color:var(--txt3)">Investigative · Analitik</div>
           </div>
-          <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-rekom','lnk-rekom')">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px 16px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-rekom','lnk-rekom')">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
               <div style="font-size:11px;color:var(--txt3);font-weight:600">Match Jurusan</div>
               <div style="background:var(--blue-l);color:var(--blue);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">#1</div>
             </div>
-            <div style="font-size:48px;font-weight:800;color:var(--blue);letter-spacing:-3px;line-height:1;margin-bottom:6px">87%</div>
-            <div style="font-size:12px;color:var(--txt3)">Teknik Informatika</div>
+            <!-- arc gauge: r=48, cx=55 cy=65, path-length≈150.8, 87%≈131.2 -->
+            <svg viewBox="0 0 110 72" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;margin-bottom:4px">
+              <defs>
+                <linearGradient id="gd-match" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="var(--blue-m)"/>
+                  <stop offset="100%" stop-color="var(--blue-d)"/>
+                </linearGradient>
+              </defs>
+              <!-- track -->
+              <path d="M 7 65 A 48 48 0 0 1 103 65" fill="none" stroke="var(--bg)" stroke-width="9" stroke-linecap="round"/>
+              <!-- fill 87% -->
+              <path d="M 7 65 A 48 48 0 0 1 103 65" fill="none" stroke="url(#gd-match)" stroke-width="9" stroke-linecap="round" stroke-dasharray="131.2 200"/>
+              <!-- tip dot at 87% endpoint (≈99.1, 45.9) -->
+              <circle cx="99.1" cy="45.9" r="5" fill="white" stroke="var(--blue)" stroke-width="2.5"/>
+              <!-- percentage label -->
+              <text x="55" y="54" text-anchor="middle" font-size="26" font-weight="800" fill="var(--blue)" font-family="Inter,system-ui,sans-serif" letter-spacing="-1.5">87%</text>
+              <!-- range labels -->
+              <text x="5" y="71" text-anchor="middle" font-size="8" fill="var(--txt3)" font-family="Inter,system-ui,sans-serif">0%</text>
+              <text x="105" y="71" text-anchor="middle" font-size="8" fill="var(--txt3)" font-family="Inter,system-ui,sans-serif">100%</text>
+            </svg>
+            <div style="font-size:12px;color:var(--txt3);text-align:center">Teknik Informatika</div>
           </div>
         </div>
 
