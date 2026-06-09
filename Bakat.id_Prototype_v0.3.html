@@ -914,172 +914,196 @@ section[id^="sec-"]{scroll-margin-top:20px}
       <div id="dp-dashboard" class="dash-page on">
 
         <!-- ① Greeting row -->
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+        <div style="display:flex;align-items:center;margin-bottom:24px">
           <div>
-            <div style="font-size:26px;font-weight:800;letter-spacing:-.7px;color:var(--txt);margin-bottom:3px">Hei, Raka! 👋</div>
-            <div style="font-size:13px;color:var(--txt3)">SMAN 5 Surabaya · Kelas 12 IPA · Laporan selesai</div>
-          </div>
-          <div style="background:var(--blue);color:#fff;border-radius:20px;padding:8px 18px;font-size:12px;font-weight:700;letter-spacing:.3px;box-shadow:0 3px 10px rgba(37,121,198,.35)">SNBT 2025</div>
-        </div>
-
-        <!-- ② 3 stat cards — white bg, accent only on number & badge -->
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px">
-          <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-profil','lnk-profil')">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-              <div style="font-size:11px;color:var(--txt3);font-weight:600">IQ Score</div>
-              <div style="background:var(--blue-l);color:var(--blue);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">TIKI</div>
-            </div>
-            <div style="font-size:48px;font-weight:800;color:var(--blue);letter-spacing:-3px;line-height:1;margin-bottom:6px">115</div>
-            <div style="font-size:12px;color:var(--txt3)">Bright Normal · P84</div>
-          </div>
-          <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-profil','lnk-profil')">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-              <div style="font-size:11px;color:var(--txt3);font-weight:600">Learning Agility</div>
-              <div style="background:var(--blue-l);color:var(--blue);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">LAI</div>
-            </div>
-            <div style="font-size:48px;font-weight:800;color:var(--blue);letter-spacing:-3px;line-height:1;margin-bottom:6px">88</div>
-            <div style="font-size:12px;color:var(--txt3)">Mandiri · Cepat serap</div>
-          </div>
-          <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-profil','lnk-profil')">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-              <div style="font-size:11px;color:var(--txt3);font-weight:600">Tipe Holland</div>
-              <div style="background:var(--org-l);color:var(--org);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">TALITA</div>
-            </div>
-            <div style="font-size:48px;font-weight:800;color:var(--org);letter-spacing:-3px;line-height:1;margin-bottom:6px">I</div>
-            <div style="font-size:12px;color:var(--txt3)">Investigative · Analitik</div>
+            <div style="font-size:26px;font-weight:800;letter-spacing:-.7px;color:var(--txt);margin-bottom:3px">Hei, Raka! 👋🏻</div>
+            <div style="font-size:13px;color:var(--txt3)">SMAN 5 Surabaya · Kelas 12 IPA</div>
           </div>
         </div>
 
-        <!-- ③ 2-col: Reko card + Gap summary -->
-        <div style="display:grid;grid-template-columns:1fr 272px;gap:14px;margin-bottom:16px">
+        <!-- ② Top 2-col: [stat cards + reko] | [ikigai] -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
 
-          <!-- Reko card -->
-          <div class="pg-card" style="padding:26px 28px">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-              <div>
-                <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--blue);margin-bottom:6px">Rekomendasi Utama</div>
-                <div style="font-size:21px;font-weight:800;letter-spacing:-.4px;color:var(--txt)">Teknik Informatika</div>
-              </div>
-              <div style="text-align:right">
-                <div style="font-size:42px;font-weight:800;color:var(--blue);letter-spacing:-2px;line-height:1">87%</div>
-                <div style="font-size:10px;color:var(--txt3);margin-top:2px">kecocokan</div>
-              </div>
-            </div>
-            <!-- 2×2 data tiles — neutral bg, accent only on value number -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px">
-              <div style="padding:13px 14px;background:var(--bg);border-radius:12px;border:1px solid var(--brd)">
-                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:5px">Passing grade</div>
-                <div style="font-size:22px;font-weight:800;color:var(--blue);letter-spacing:-1px;line-height:1">~710</div>
-                <div style="font-size:11px;color:var(--txt3);margin-top:3px">UTBK</div>
-              </div>
-              <div style="padding:13px 14px;background:var(--bg);border-radius:12px;border:1px solid var(--brd)">
-                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:5px">Skor kamu</div>
-                <div style="font-size:22px;font-weight:800;color:var(--org);letter-spacing:-1px;line-height:1">~630</div>
-                <div style="font-size:11px;color:var(--txt3);margin-top:3px">gap <strong style="color:var(--org)">+70</strong></div>
-              </div>
-              <div style="padding:13px 14px;background:var(--bg);border-radius:12px;border:1px solid var(--brd)">
-                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:5px">Daya tampung</div>
-                <div style="font-size:22px;font-weight:800;color:var(--txt);letter-spacing:-1px;line-height:1">120</div>
-                <div style="font-size:11px;color:var(--txt3);margin-top:3px">kursi / tahun</div>
-              </div>
-              <div style="padding:13px 14px;background:var(--bg);border-radius:12px;border:1px solid var(--brd)">
-                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:5px">UKT range</div>
-                <div style="font-size:18px;font-weight:800;color:var(--blue);letter-spacing:-.5px;line-height:1">500rb</div>
-                <div style="font-size:11px;color:var(--txt3);margin-top:3px">s/d 12,5jt</div>
-              </div>
-            </div>
-            <div style="font-size:11px;color:var(--txt3);margin-bottom:8px">Klik kampus untuk detail peluang masuk</div>
-            <div class="chips" style="margin-top:0">
-              <span class="chip" onclick="showCampus('ITS Surabaya','#0A3D7A','ITS')"><span class="av" style="background:#0A3D7A">ITS</span> ITS</span>
-              <span class="chip" onclick="showCampus('Univ. Brawijaya','#C03030','UB')"><span class="av" style="background:#C03030">UB</span> Unibraw</span>
-              <span class="chip" onclick="showCampus('Telkom University','#B03090','Tel')"><span class="av" style="background:#B03090">Tel</span> Telkom</span>
-              <span class="chip" onclick="showCampus('Binus University','#E06020','BNS')"><span class="av" style="background:#E06020">BNS</span> Binus</span>
-            </div>
-            <!-- alt toggle -->
-            <button class="show-more" id="alt-btn" onclick="toggleEl('alt-list','alt-btn')" style="margin-top:12px">
-              Lihat 3 alternatif <span class="sm-arrow">↓</span>
-            </button>
-            <div id="alt-list" style="display:none;margin-top:10px">
-              <div class="alt-grid">
-                <div class="alt-item"><div class="alt-rank">#2</div><div class="alt-name">Sistem Informasi</div><div class="alt-camps">Unibraw · Telkom</div><div class="alt-pct">74%</div></div>
-                <div class="alt-item"><div class="alt-rank">#3</div><div class="alt-name">Data Science</div><div class="alt-camps">Binus · Pradita</div><div class="alt-pct">71%</div></div>
-                <div class="alt-item"><div class="alt-rank">#4</div><div class="alt-name">Teknik Elektro</div><div class="alt-camps">ITS · UI</div><div class="alt-pct">68%</div></div>
-              </div>
-            </div>
-          </div>
+          <!-- Left col: stat cards + dark reko card -->
+          <div style="display:flex;flex-direction:column;gap:14px">
 
-          <!-- Gap summary card -->
-          <div class="pg-card" style="padding:22px 20px;display:flex;flex-direction:column">
-            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--txt3);margin-bottom:14px">Gap Overview</div>
-            <div style="display:flex;flex-direction:column;gap:0;margin-bottom:20px">
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--brd)">
-                <span style="font-size:12px;color:var(--txt2)">Gap terbesar</span>
-                <span style="font-size:13px;font-weight:800;color:var(--org)">PM +33</span>
-              </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--brd)">
-                <span style="font-size:12px;color:var(--txt2)">Sudah baik</span>
-                <span style="font-size:13px;font-weight:800;color:var(--blue)">PK, LBI ✓</span>
-              </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--brd)">
-                <span style="font-size:12px;color:var(--txt2)">Perlu kerja</span>
-                <span style="font-size:13px;font-weight:800;color:var(--txt)">4 dari 6</span>
-              </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0">
-                <span style="font-size:12px;color:var(--txt2)">Potensi naik</span>
-                <span style="font-size:13px;font-weight:800;color:var(--blue)">+100 poin</span>
-              </div>
-            </div>
-            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--txt3);margin-bottom:4px">Prioritas gap</div>
-            <!-- lollipop chart — bars scale: max gap=33 → 80px height -->
-            <div style="position:relative">
-              <div style="display:flex;align-items:stretch;height:90px;gap:5px;margin-top:30px">
+            <!-- 2×2 stat cards -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
 
-                <!-- PM — selected, orange -->
-                <div style="flex:1;display:flex;flex-direction:column;align-items:center;position:relative">
-                  <div style="position:absolute;inset:0;background:var(--bg);border-radius:14px"></div>
-                  <div style="position:absolute;top:-26px;left:50%;transform:translateX(-50%);background:var(--txt);color:#fff;border-radius:8px;padding:3px 8px;font-size:11px;font-weight:800;white-space:nowrap;z-index:5">+33</div>
-                  <div style="flex:1"></div>
-                  <div style="width:12px;height:12px;border-radius:50%;background:var(--org);position:relative;z-index:1;flex-shrink:0;box-shadow:0 0 0 3px rgba(224,104,26,.2)"></div>
-                  <div style="width:2px;height:78px;background:var(--org);position:relative;z-index:1;border-radius:2px;flex-shrink:0"></div>
+              <!-- IQ Score -->
+              <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-profil','lnk-profil')">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                  <div style="font-size:11px;color:var(--txt3);font-weight:600">IQ Score</div>
+                  <div style="background:var(--blue-l);color:var(--blue);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">TIKI</div>
                 </div>
-
-                <!-- PPU -->
-                <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-                  <div style="flex:1"></div>
-                  <div style="width:10px;height:10px;border-radius:50%;background:var(--blue);opacity:.5;flex-shrink:0"></div>
-                  <div style="width:2px;height:66px;background:var(--blue);opacity:.35;border-radius:2px;flex-shrink:0"></div>
-                </div>
-
-                <!-- PBM -->
-                <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-                  <div style="flex:1"></div>
-                  <div style="width:10px;height:10px;border-radius:50%;background:var(--blue);opacity:.5;flex-shrink:0"></div>
-                  <div style="width:2px;height:66px;background:var(--blue);opacity:.35;border-radius:2px;flex-shrink:0"></div>
-                </div>
-
-                <!-- PU -->
-                <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-                  <div style="flex:1"></div>
-                  <div style="width:10px;height:10px;border-radius:50%;background:var(--blue);opacity:.5;flex-shrink:0"></div>
-                  <div style="width:2px;height:60px;background:var(--blue);opacity:.35;border-radius:2px;flex-shrink:0"></div>
-                </div>
-
+                <div style="font-size:48px;font-weight:800;color:var(--blue);letter-spacing:-3px;line-height:1;margin-bottom:6px">115</div>
+                <div style="font-size:12px;color:var(--txt3)">Bright Normal · P84</div>
               </div>
-              <!-- label badges -->
-              <div style="display:flex;gap:5px;margin-top:7px">
-                <div style="flex:1;text-align:center"><span style="display:inline-block;background:var(--org);color:#fff;border-radius:10px;padding:3px 6px;font-size:10px;font-weight:800;line-height:1.4">PM</span></div>
-                <div style="flex:1;text-align:center"><span style="display:inline-block;background:var(--bg);color:var(--txt3);border-radius:10px;padding:3px 4px;font-size:9px;font-weight:700;line-height:1.4">PPU</span></div>
-                <div style="flex:1;text-align:center"><span style="display:inline-block;background:var(--bg);color:var(--txt3);border-radius:10px;padding:3px 4px;font-size:9px;font-weight:700;line-height:1.4">PBM</span></div>
-                <div style="flex:1;text-align:center"><span style="display:inline-block;background:var(--bg);color:var(--txt3);border-radius:10px;padding:3px 5px;font-size:10px;font-weight:700;line-height:1.4">PU</span></div>
+
+              <!-- Learning Agility -->
+              <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-profil','lnk-profil')">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                  <div style="font-size:11px;color:var(--txt3);font-weight:600">Learning Agility</div>
+                  <div style="background:var(--blue-l);color:var(--blue);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">LAI</div>
+                </div>
+                <div style="font-size:48px;font-weight:800;color:var(--blue);letter-spacing:-3px;line-height:1;margin-bottom:6px">88</div>
+                <div style="font-size:12px;color:var(--txt3)">Mandiri · Cepat serap</div>
+              </div>
+
+              <!-- Tipe Minat Bakat -->
+              <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-profil','lnk-profil')">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                  <div style="font-size:11px;color:var(--txt3);font-weight:600">Tipe Minat Bakat</div>
+                  <div style="background:var(--org-l);color:var(--org);border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700">TALITA</div>
+                </div>
+                <div style="font-size:48px;font-weight:800;color:var(--org);letter-spacing:-3px;line-height:1;margin-bottom:6px">I</div>
+                <div style="font-size:12px;color:var(--txt3)">Investigative · Analitik</div>
+              </div>
+
+              <!-- Skor Tryout (NEW) -->
+              <div style="background:var(--sur);border-radius:var(--r2);padding:22px 20px;cursor:pointer;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--sh)'" onclick="switchPage('dp-profil','lnk-profil')">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                  <div style="font-size:11px;color:var(--txt3);font-weight:600">Skor Tryout</div>
+                </div>
+                <div style="font-size:48px;font-weight:800;color:var(--txt);letter-spacing:-3px;line-height:1;margin-bottom:6px">630</div>
+                <div style="font-size:12px;color:var(--txt3)">Terakhir diuji April 2026</div>
+              </div>
+
+            </div><!-- end 2×2 stat cards -->
+
+            <!-- Dark navy Reko card -->
+            <div style="background:var(--grad);border-radius:var(--r2);padding:24px 26px;position:relative;overflow:hidden;box-shadow:var(--sh2)">
+              <!-- Decorative bg circles -->
+              <div style="position:absolute;right:-50px;top:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none"></div>
+              <div style="position:absolute;right:40px;bottom:-70px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none"></div>
+
+              <!-- Header row: jurusan name + % match -->
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px">
+                <div>
+                  <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.55);margin-bottom:5px">Rekomendasi Jurusan</div>
+                  <div style="font-size:21px;font-weight:800;letter-spacing:-.4px;color:#fff;line-height:1.2">Teknik Informatika</div>
+                </div>
+                <div style="text-align:right;flex-shrink:0;margin-left:12px">
+                  <div style="font-size:40px;font-weight:800;color:#fff;letter-spacing:-2px;line-height:1">87%</div>
+                  <div style="font-size:10px;color:rgba(255,255,255,.55);margin-top:1px">kecocokan</div>
+                </div>
+              </div>
+
+              <!-- Campus chips (white glass style) -->
+              <div style="display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap">
+                <span onclick="showCampus('ITS Surabaya','#0A3D7A','ITS')" style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border-radius:20px;padding:4px 10px 4px 4px;cursor:pointer;font-size:12px;font-weight:600;color:#fff;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">
+                  <span style="width:22px;height:22px;border-radius:50%;background:#0A3D7A;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#fff;flex-shrink:0">ITS</span>ITS
+                </span>
+                <span onclick="showCampus('Univ. Brawijaya','#C03030','UB')" style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border-radius:20px;padding:4px 10px 4px 4px;cursor:pointer;font-size:12px;font-weight:600;color:#fff;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">
+                  <span style="width:22px;height:22px;border-radius:50%;background:#C03030;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#fff;flex-shrink:0">UB</span>Unibraw
+                </span>
+                <span onclick="showCampus('Telkom University','#B03090','Tel')" style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border-radius:20px;padding:4px 10px 4px 4px;cursor:pointer;font-size:12px;font-weight:600;color:#fff;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">
+                  <span style="width:22px;height:22px;border-radius:50%;background:#B03090;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#fff;flex-shrink:0">Tel</span>Telkom
+                </span>
+                <span onclick="showCampus('Binus University','#E06020','BNS')" style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border-radius:20px;padding:4px 10px 4px 4px;cursor:pointer;font-size:12px;font-weight:600;color:#fff;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">
+                  <span style="width:22px;height:22px;border-radius:50%;background:#E06020;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#fff;flex-shrink:0">BNS</span>Binus
+                </span>
+              </div>
+
+              <!-- 3-tile data row -->
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:12px">
+                <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:10px 12px">
+                  <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.5);margin-bottom:4px">Passing Grade</div>
+                  <div style="font-size:19px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1">~710</div>
+                  <div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">UTBK</div>
+                </div>
+                <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:10px 12px">
+                  <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.5);margin-bottom:4px">Daya Tampung</div>
+                  <div style="font-size:19px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1">120</div>
+                  <div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">kursi / tahun</div>
+                </div>
+                <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:10px 12px">
+                  <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.5);margin-bottom:4px">Estimasi Cost</div>
+                  <div style="display:flex;align-items:flex-start;gap:6px">
+                    <div>
+                      <div style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.15">6,5jt</div>
+                      <div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:1px">UKT</div>
+                    </div>
+                    <div style="width:1px;background:rgba(255,255,255,.2);height:24px;flex-shrink:0;margin-top:1px"></div>
+                    <div>
+                      <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-.3px;line-height:1.2">6–8jt</div>
+                      <div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:1px">Living Cost/bln</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- POSISIMU DI ANTREAN -->
+              <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;margin-bottom:14px">
+                <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.45);margin-bottom:8px">Posisimu di Antrean</div>
+                <div style="position:relative;height:6px;background:rgba(255,255,255,.12);border-radius:3px;margin-bottom:6px">
+                  <div style="width:32%;height:100%;background:rgba(233,110,80,.75);border-radius:3px"></div>
+                  <div style="position:absolute;left:32%;top:-4px;width:2px;height:14px;background:rgba(255,255,255,.9);border-radius:1px;transform:translateX(-50%)"></div>
+                </div>
+                <div style="font-size:11px;font-weight:700;color:#E98664">68% pendaftar di atasmu</div>
+              </div>
+
+              <!-- Carousel dots -->
+              <div style="display:flex;align-items:center;justify-content:center;gap:5px">
+                <div style="width:18px;height:5px;border-radius:3px;background:rgba(255,255,255,.9)"></div>
+                <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3)"></div>
+                <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3)"></div>
+                <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3)"></div>
+                <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3)"></div>
+              </div>
+            </div><!-- end dark reko card -->
+
+          </div><!-- end left col -->
+
+          <!-- Right col: Ikigai (fills full height of left col) -->
+          <div class="pg-card" style="display:flex;flex-direction:column;margin-bottom:0">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+              <div style="font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.3px">Ikigai Synthesis</div>
+              <div style="font-size:12px;color:var(--txt3)">Klik zona diagram untuk detail</div>
+            </div>
+            <svg viewBox="0 0 660 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;flex:1;display:block;margin:0 auto" font-family="Inter,system-ui,sans-serif">
+              <circle id="ik-love" cx="210" cy="200" r="170" fill="#C8DEFA" fill-opacity=".55" stroke="#1B6FAD" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('love')"/>
+              <circle id="ik-good" cx="450" cy="200" r="170" fill="#C8DEFA" fill-opacity=".55" stroke="#2579C6" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('good')"/>
+              <circle id="ik-need" cx="210" cy="370" r="170" fill="#BBE8D8" fill-opacity=".55" stroke="#0F6E56" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('need')"/>
+              <circle id="ik-paid" cx="450" cy="370" r="170" fill="#FAE4B2" fill-opacity=".55" stroke="#C99A00" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('paid')"/>
+              <circle cx="330" cy="285" r="58" fill="white" fill-opacity=".9" stroke="#1B6FAD" stroke-width="2" stroke-dasharray="5 3" style="cursor:pointer" onclick="ikClick('center')"/>
+              <text x="150" y="88"  text-anchor="middle" font-size="9"    font-weight="800" fill="#1B3F6A" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU SUKA</text>
+              <text x="150" y="108" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1B6FAD" style="pointer-events:none">Investigatif</text>
+              <text x="150" y="125" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1B6FAD" style="pointer-events:none">Analisis &amp; riset</text>
+              <text x="150" y="142" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1B6FAD" style="pointer-events:none">Pola &amp; abstraksi</text>
+              <text x="510" y="88"  text-anchor="middle" font-size="9"    font-weight="800" fill="#1B3F6A" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU BISA</text>
+              <text x="510" y="108" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2579C6" style="pointer-events:none">IQ 115 · Bright Normal</text>
+              <text x="510" y="125" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2579C6" style="pointer-events:none">Abstraksi tinggi</text>
+              <text x="510" y="142" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2579C6" style="pointer-events:none">Learning Agility 88</text>
+              <text x="150" y="438" text-anchor="middle" font-size="9"    font-weight="800" fill="#0A4A38" letter-spacing="1.2" style="pointer-events:none">DUNIA BUTUHKAN</text>
+              <text x="150" y="457" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F6E56" style="pointer-events:none">Teknologi &amp; AI</text>
+              <text x="150" y="474" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F6E56" style="pointer-events:none">Transformasi digital</text>
+              <text x="510" y="438" text-anchor="middle" font-size="9"    font-weight="800" fill="#8A6500" letter-spacing="1.2" style="pointer-events:none">BISA DIBAYAR</text>
+              <text x="510" y="457" text-anchor="middle" font-size="11.5" font-weight="600" fill="#C99A00" style="pointer-events:none">Gaji IT tertinggi</text>
+              <text x="510" y="474" text-anchor="middle" font-size="11.5" font-weight="600" fill="#C99A00" style="pointer-events:none">Demand tinggi</text>
+              <text x="330" y="167" text-anchor="middle" font-size="11" font-weight="800" fill="#2A1060" letter-spacing=".5" style="pointer-events:none">PASSION</text>
+              <text x="330" y="182" text-anchor="middle" font-size="10"  fill="#2A1060" style="pointer-events:none">Suka &amp; berbakat</text>
+              <text x="174" y="283" text-anchor="middle" font-size="11" font-weight="800" fill="#0A3560" style="pointer-events:none">MISI</text>
+              <text x="174" y="298" text-anchor="middle" font-size="10"  fill="#0A3560" style="pointer-events:none">Suka &amp; diperlukan</text>
+              <text x="486" y="283" text-anchor="middle" font-size="11" font-weight="800" fill="#7A4400" style="pointer-events:none">PROFESI</text>
+              <text x="486" y="298" text-anchor="middle" font-size="10"  fill="#7A4400" style="pointer-events:none">Bisa &amp; dibayar</text>
+              <text x="330" y="400" text-anchor="middle" font-size="11" font-weight="800" fill="#0A4A38" style="pointer-events:none">VOKASI</text>
+              <text x="330" y="415" text-anchor="middle" font-size="10"  fill="#0A4A38" style="pointer-events:none">Perlu &amp; dibayar</text>
+              <text x="330" y="272" text-anchor="middle" font-size="14" font-weight="800" fill="#1B3F6A" letter-spacing=".5" style="pointer-events:none">✦ IKIGAI</text>
+              <text x="330" y="290" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1B6FAD" style="pointer-events:none">Teknik Informatika</text>
+              <text x="330" y="309" text-anchor="middle" font-size="18"  font-weight="800" fill="#1B6FAD" style="pointer-events:none">87%</text>
+            </svg>
+            <div id="ik-panel" class="ik-panel" style="margin-top:16px">
+              <div style="display:flex;align-items:flex-start;gap:14px">
+                <div id="ik-panel-dot" style="width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px"></div>
+                <div><div id="ik-panel-title" style="font-size:14px;font-weight:700;margin-bottom:5px"></div><div id="ik-panel-body" style="font-size:13px;color:var(--txt2);line-height:1.7"></div></div>
               </div>
             </div>
-            <button onclick="switchPage('dp-rencana','lnk-rencana')" style="margin-top:18px;width:100%;padding:11px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(37,121,198,.3);transition:all .15s" onmouseover="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--blue-d').trim()" onmouseout="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--blue').trim()">
-              Lihat rencana aksi →
-            </button>
-          </div>
-        </div>
+          </div><!-- end right col (ikigai) -->
 
-        <!-- ④ Campus expand panel -->
+        </div><!-- end top 2-col -->
+
+        <!-- ③ Campus expand panel -->
         <div id="campus-panel" style="display:none;margin-bottom:16px">
           <div style="background:var(--sur);border-radius:var(--r2);overflow:hidden;box-shadow:var(--sh2)">
             <div id="cp-hdr" class="camp-hdr"></div>
@@ -1097,103 +1121,119 @@ section[id^="sec-"]{scroll-margin-top:20px}
           </div>
         </div>
 
-        <!-- ⑤ Gap Analysis card -->
-        <div class="pg-card" style="margin-bottom:16px">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px">
-            <div>
-              <div style="font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.3px;margin-bottom:3px">Gap Analysis vs Aktualisasi</div>
-              <div style="font-size:12px;color:var(--txt3)">Hover tiap baris untuk detail skor</div>
+        <!-- ④ Bottom 2-col: Gap Analysis | Gap Overview -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
+
+          <!-- Gap Analysis card (19-bar lollipop) -->
+          <div class="pg-card" style="margin-bottom:0">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px">
+              <div>
+                <div style="font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.3px;margin-bottom:3px">Gap Analysis vs Aktualisasi</div>
+                <div style="font-size:12px;color:var(--txt3)">Hover tiap baris untuk detail skor</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--txt3);flex-shrink:0;margin-left:12px">
+                <div style="display:flex;align-items:center;gap:4px"><div style="width:18px;height:6px;border-radius:3px;background:var(--org);opacity:.25"></div>Potensi</div>
+                <div style="display:flex;align-items:center;gap:4px"><div style="width:18px;height:6px;border-radius:3px;background:var(--org)"></div>Aktual</div>
+              </div>
             </div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--txt3)">
-              <div style="display:flex;align-items:center;gap:5px"><div style="width:20px;height:7px;border-radius:4px;background:var(--org);opacity:.2"></div>Potensi</div>
-              <div style="display:flex;align-items:center;gap:5px"><div style="width:20px;height:7px;border-radius:4px;background:var(--org)"></div>Aktual</div>
+
+            <!-- 19-bar lollipop: PM + PPU×3 + PBM×3 + PU×3 + PPU×3 + PBM×3 + PU×3 -->
+            <div style="position:relative;margin-top:30px">
+              <div style="display:flex;align-items:flex-end;height:90px;gap:3px">
+                <!-- PM — highlighted orange -->
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;position:relative">
+                  <div style="position:absolute;inset:0;background:var(--bg);border-radius:8px"></div>
+                  <div style="position:absolute;top:-26px;left:50%;transform:translateX(-50%);background:var(--txt);color:#fff;border-radius:7px;padding:2px 6px;font-size:10px;font-weight:800;white-space:nowrap;z-index:5">+33</div>
+                  <div style="flex:1"></div>
+                  <div style="width:11px;height:11px;border-radius:50%;background:var(--org);position:relative;z-index:1;flex-shrink:0;box-shadow:0 0 0 3px rgba(224,104,26,.2)"></div>
+                  <div style="width:2px;height:78px;background:var(--org);position:relative;z-index:1;border-radius:2px;flex-shrink:0"></div>
+                </div>
+                <!-- PPU ×3 -->
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:66px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:70px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:60px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <!-- PBM ×3 -->
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:66px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:64px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:68px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <!-- PU ×3 -->
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:58px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:66px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:62px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <!-- PPU ×3 (session 2) -->
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:64px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:60px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:56px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <!-- PBM ×3 (session 2) -->
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:66px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:70px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:62px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <!-- PU ×3 (session 2) -->
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:58px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:64px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="flex:1"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.4;flex-shrink:0"></div><div style="width:2px;height:56px;background:var(--blue);opacity:.28;border-radius:2px;flex-shrink:0"></div></div>
+              </div>
+              <!-- Label row -->
+              <div style="display:flex;gap:3px;margin-top:6px">
+                <div style="flex:1;text-align:center"><span style="display:inline-block;background:var(--org);color:#fff;border-radius:8px;padding:2px 4px;font-size:8px;font-weight:800;line-height:1.4">PM</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PPU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PPU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PPU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PBM</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PBM</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PBM</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PPU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PPU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PPU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PBM</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PBM</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PBM</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PU</span></div>
+                <div style="flex:1;text-align:center"><span style="font-size:7px;font-weight:700;color:var(--txt3)">PU</span></div>
+              </div>
+            </div><!-- end lollipop -->
+
+            <!-- Summary rows -->
+            <div style="margin-top:18px">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--brd)">
+                <span style="font-size:12px;color:var(--txt2)">Gap terbesar</span>
+                <span style="display:inline-block;background:var(--org);color:#fff;border-radius:10px;padding:2px 9px;font-size:11px;font-weight:800">PM</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--brd)">
+                <span style="font-size:12px;color:var(--txt2)">Sudah baik</span>
+                <span style="display:inline-block;background:var(--blue-l);color:var(--blue);border-radius:10px;padding:2px 9px;font-size:11px;font-weight:800">PK, LBI</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0">
+                <span style="font-size:12px;color:var(--txt2)">Potensi naik</span>
+                <span style="font-size:12px;font-weight:800;color:var(--blue)">+100 poin</span>
+              </div>
             </div>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 200px;gap:32px">
-            <div>
-              <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--txt3);margin-bottom:8px">TPS — Tes Potensi Skolastik</div>
-              <div class="gvr"><span class="gvr-lbl">PM</span><div class="gvr-track"><div class="gvr-pot" style="width:88%;background:var(--org)"></div><div class="gvr-act" style="width:55%;background:var(--org)"></div></div><div class="gvr-info" style="color:var(--org)">55 → 88 · gap <strong>+33</strong></div></div>
-              <div class="gvr"><span class="gvr-lbl">PPU</span><div class="gvr-track"><div class="gvr-pot" style="width:78%;background:var(--org)"></div><div class="gvr-act" style="width:50%;background:var(--org)"></div></div><div class="gvr-info" style="color:var(--org)">50 → 78 · gap <strong>+28</strong></div></div>
-              <div class="gvr"><span class="gvr-lbl">PBM</span><div class="gvr-track"><div class="gvr-pot" style="width:78%;background:var(--blue)"></div><div class="gvr-act" style="width:50%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">50 → 78 · gap <strong>+28</strong></div></div>
-              <div class="gvr"><span class="gvr-lbl">PU</span><div class="gvr-track"><div class="gvr-pot" style="width:88%;background:var(--blue)"></div><div class="gvr-act" style="width:63%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">63 → 88 · gap <strong>+25</strong></div></div>
-              <div class="gvr"><span class="gvr-lbl">PK</span><div class="gvr-track"><div class="gvr-pot" style="width:90%;background:var(--blue)"></div><div class="gvr-act" style="width:90%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">90 · sudah baik <strong>✓</strong></div></div>
-              <div class="gvr"><span class="gvr-lbl">LBI</span><div class="gvr-track"><div class="gvr-pot" style="width:80%;background:var(--blue)"></div><div class="gvr-act" style="width:80%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">80 · sudah baik <strong>✓</strong></div></div>
-              <button class="show-more" id="gap-btn" onclick="toggleEl('gap-interp','gap-btn')" style="margin-top:14px">Apa artinya buat kamu? <span class="sm-arrow">↓</span></button>
-              <div id="gap-interp" style="display:none;font-size:13px;color:var(--txt2);line-height:1.75;padding:14px 0">Penalaran Matematika (PM) adalah gap terbesarmu — selisih 33 poin antara skor tryout dan potensi yang terdeteksi dari tes TIKI. Ini bukan soal kemampuan, tapi masalah latihan. IQ 115-mu cukup untuk mencapai skor target; yang kurang hanyalah eksposur soal yang terstruktur.</div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:0">
-              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--brd);font-size:13px"><span style="color:var(--txt2)">Gap terbesar</span><span style="font-weight:800;color:var(--org)">PM +33</span></div>
-              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--brd);font-size:13px"><span style="color:var(--txt2)">Sudah baik</span><span style="font-weight:800;color:var(--blue)">PK, LBI ✓</span></div>
-              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--brd);font-size:13px"><span style="color:var(--txt2)">Perlu kerja</span><span style="font-weight:800">4 dari 6</span></div>
-              <div style="display:flex;justify-content:space-between;padding:10px 0;font-size:13px"><span style="color:var(--txt2)">Potensi naik</span><span style="font-weight:800;color:var(--blue)">+100 poin</span></div>
-            </div>
-          </div>
-        </div>
+            <button class="show-more" id="gap-btn" onclick="toggleEl('gap-interp','gap-btn')" style="margin-top:10px">Apa artinya buat kamu? <span class="sm-arrow">↓</span></button>
+            <div id="gap-interp" style="display:none;font-size:13px;color:var(--txt2);line-height:1.75;padding:14px 0">Penalaran Matematika (PM) adalah gap terbesarmu — selisih 33 poin antara skor tryout dan potensi yang terdeteksi dari tes TIKI. Ini bukan soal kemampuan, tapi masalah latihan. IQ 115-mu cukup untuk mencapai skor target; yang kurang hanyalah eksposur soal yang terstruktur.</div>
+          </div><!-- end Gap Analysis card -->
 
-        <!-- ⑥ Ikigai card -->
-        <div class="pg-card">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-            <div style="font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.3px">Ikigai Synthesis</div>
-            <div style="font-size:12px;color:var(--txt3)">Klik zona diagram untuk detail</div>
-          </div>
-          <!-- circles: cx 210/450, cy 200/370, r=170 → center=(330,285)
-               private-area text at x=150/510 (inset 80px from each cx extremity)
-               all text positions verified to be inside their respective circles -->
-          <svg viewBox="0 0 660 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto" font-family="Inter,system-ui,sans-serif">
-            <!-- four circles -->
-            <circle id="ik-love" cx="210" cy="200" r="170" fill="#C8DEFA" fill-opacity=".55" stroke="#1B6FAD" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('love')"/>
-            <circle id="ik-good" cx="450" cy="200" r="170" fill="#C8DEFA" fill-opacity=".55" stroke="#2579C6" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('good')"/>
-            <circle id="ik-need" cx="210" cy="370" r="170" fill="#BBE8D8" fill-opacity=".55" stroke="#0F6E56" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('need')"/>
-            <circle id="ik-paid" cx="450" cy="370" r="170" fill="#FAE4B2" fill-opacity=".55" stroke="#C99A00" stroke-width="1.5" style="cursor:pointer;transition:fill-opacity .2s" onclick="ikClick('paid')"/>
-            <circle cx="330" cy="285" r="58" fill="white" fill-opacity=".9" stroke="#1B6FAD" stroke-width="2" stroke-dasharray="5 3" style="cursor:pointer" onclick="ikClick('center')"/>
+          <!-- Gap Overview card (horizontal bars + CTA) -->
+          <div class="pg-card" style="margin-bottom:0;display:flex;flex-direction:column">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--txt3);margin-bottom:3px">Gap Overview</div>
+            <div style="font-size:12px;font-weight:600;color:var(--txt2);margin-bottom:16px">TPS — Tes Potensi Skolastik</div>
+            <div class="gvr"><span class="gvr-lbl" style="color:var(--org)">PM</span><div class="gvr-track"><div class="gvr-pot" style="width:88%;background:var(--org)"></div><div class="gvr-act" style="width:55%;background:var(--org)"></div></div><div class="gvr-info" style="color:var(--org)">55 → 88 · gap <strong>+33</strong></div></div>
+            <div class="gvr"><span class="gvr-lbl" style="color:var(--org)">PPU</span><div class="gvr-track"><div class="gvr-pot" style="width:78%;background:var(--org)"></div><div class="gvr-act" style="width:50%;background:var(--org)"></div></div><div class="gvr-info" style="color:var(--org)">50 → 78 · gap <strong>+28</strong></div></div>
+            <div class="gvr"><span class="gvr-lbl">PBM</span><div class="gvr-track"><div class="gvr-pot" style="width:78%;background:var(--blue)"></div><div class="gvr-act" style="width:50%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">50 → 78 · gap <strong>+28</strong></div></div>
+            <div class="gvr"><span class="gvr-lbl">PU</span><div class="gvr-track"><div class="gvr-pot" style="width:88%;background:var(--blue)"></div><div class="gvr-act" style="width:63%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">63 → 88 · gap <strong>+25</strong></div></div>
+            <div class="gvr"><span class="gvr-lbl">PK</span><div class="gvr-track"><div class="gvr-pot" style="width:90%;background:var(--blue)"></div><div class="gvr-act" style="width:90%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">90 · sudah baik <strong>✓</strong></div></div>
+            <div class="gvr"><span class="gvr-lbl">LBI</span><div class="gvr-track"><div class="gvr-pot" style="width:80%;background:var(--blue)"></div><div class="gvr-act" style="width:80%;background:var(--blue)"></div></div><div class="gvr-info" style="color:var(--blue)">80 · sudah baik <strong>✓</strong></div></div>
+            <button class="show-more" style="margin-top:14px">Apa artinya buat kamu? <span class="sm-arrow">↓</span></button>
+            <div style="flex:1"></div>
+            <button onclick="switchPage('dp-rencana','lnk-rencana')" style="margin-top:16px;width:100%;padding:13px;background:var(--blue);color:#fff;border:none;border-radius:var(--r2);font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(37,121,198,.3);transition:all .15s;letter-spacing:-.1px" onmouseover="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--blue-d').trim()" onmouseout="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--blue').trim()">
+              Lihat rencana aksi →
+            </button>
+          </div><!-- end Gap Overview card -->
 
-            <!-- LOVE — top-left private area (x=150, y=88–141) -->
-            <text x="150" y="88"  text-anchor="middle" font-size="9"    font-weight="800" fill="#1B3F6A" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU SUKA</text>
-            <text x="150" y="108" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1B6FAD" style="pointer-events:none">Investigatif</text>
-            <text x="150" y="125" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1B6FAD" style="pointer-events:none">Analisis &amp; riset</text>
-            <text x="150" y="142" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1B6FAD" style="pointer-events:none">Pola &amp; abstraksi</text>
-
-            <!-- GOOD — top-right private area (x=510, y=88–141) -->
-            <text x="510" y="88"  text-anchor="middle" font-size="9"    font-weight="800" fill="#1B3F6A" letter-spacing="1.2" style="pointer-events:none">APA YANG KAMU BISA</text>
-            <text x="510" y="108" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2579C6" style="pointer-events:none">IQ 115 · Bright Normal</text>
-            <text x="510" y="125" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2579C6" style="pointer-events:none">Abstraksi tinggi</text>
-            <text x="510" y="142" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2579C6" style="pointer-events:none">Learning Agility 88</text>
-
-            <!-- NEED — bottom-left private area (x=150, y=438–471) -->
-            <text x="150" y="438" text-anchor="middle" font-size="9"    font-weight="800" fill="#0A4A38" letter-spacing="1.2" style="pointer-events:none">DUNIA BUTUHKAN</text>
-            <text x="150" y="457" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F6E56" style="pointer-events:none">Teknologi &amp; AI</text>
-            <text x="150" y="474" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F6E56" style="pointer-events:none">Transformasi digital</text>
-
-            <!-- PAID — bottom-right private area (x=510, y=438–471) -->
-            <text x="510" y="438" text-anchor="middle" font-size="9"    font-weight="800" fill="#8A6500" letter-spacing="1.2" style="pointer-events:none">BISA DIBAYAR</text>
-            <text x="510" y="457" text-anchor="middle" font-size="11.5" font-weight="600" fill="#C99A00" style="pointer-events:none">Gaji IT tertinggi</text>
-            <text x="510" y="474" text-anchor="middle" font-size="11.5" font-weight="600" fill="#C99A00" style="pointer-events:none">Demand tinggi</text>
-
-            <!-- intersection zone labels -->
-            <text x="330" y="167" text-anchor="middle" font-size="11" font-weight="800" fill="#2A1060" letter-spacing=".5" style="pointer-events:none">PASSION</text>
-            <text x="330" y="182" text-anchor="middle" font-size="10"  fill="#2A1060" style="pointer-events:none">Suka &amp; berbakat</text>
-
-            <text x="174" y="283" text-anchor="middle" font-size="11" font-weight="800" fill="#0A3560" style="pointer-events:none">MISI</text>
-            <text x="174" y="298" text-anchor="middle" font-size="10"  fill="#0A3560" style="pointer-events:none">Suka &amp; diperlukan</text>
-
-            <text x="486" y="283" text-anchor="middle" font-size="11" font-weight="800" fill="#7A4400" style="pointer-events:none">PROFESI</text>
-            <text x="486" y="298" text-anchor="middle" font-size="10"  fill="#7A4400" style="pointer-events:none">Bisa &amp; dibayar</text>
-
-            <text x="330" y="400" text-anchor="middle" font-size="11" font-weight="800" fill="#0A4A38" style="pointer-events:none">VOKASI</text>
-            <text x="330" y="415" text-anchor="middle" font-size="10"  fill="#0A4A38" style="pointer-events:none">Perlu &amp; dibayar</text>
-
-            <!-- center IKIGAI -->
-            <text x="330" y="272" text-anchor="middle" font-size="14" font-weight="800" fill="#1B3F6A" letter-spacing=".5" style="pointer-events:none">✦ IKIGAI</text>
-            <text x="330" y="290" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1B6FAD" style="pointer-events:none">Teknik Informatika</text>
-            <text x="330" y="309" text-anchor="middle" font-size="18"  font-weight="800" fill="#1B6FAD" style="pointer-events:none">87%</text>
-          </svg>
-          <div id="ik-panel" class="ik-panel" style="margin-top:16px">
-            <div style="display:flex;align-items:flex-start;gap:14px">
-              <div id="ik-panel-dot" style="width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px"></div>
-              <div><div id="ik-panel-title" style="font-size:14px;font-weight:700;margin-bottom:5px"></div><div id="ik-panel-body" style="font-size:13px;color:var(--txt2);line-height:1.7"></div></div>
-            </div>
-          </div>
-        </div>
+        </div><!-- end bottom 2-col -->
 
       </div><!-- end dp-dashboard -->
 
@@ -1550,6 +1590,11 @@ function switchPage(pageId, linkId){
   if(link) link.classList.add('on');
   const main=document.getElementById('dash-main');
   if(main) main.scrollTo({top:0,behavior:'instant'});
+  // always reset campus panels when switching pages
+  const cp=document.getElementById('campus-panel');
+  if(cp) cp.style.display='none';
+  const cprk=document.getElementById('campus-panel-rk');
+  if(cprk) cprk.style.display='none';
 }
 
 // ── campus panel builder ─────────────────────────────────
