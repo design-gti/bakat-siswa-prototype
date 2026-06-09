@@ -13,12 +13,12 @@
   --red:#C14444; --red-l:#FEECEC;
   --ylw:#C99A00; --ylw-l:#FEF9E7;
   --vio:#6D3EAD; --vio-l:#EDE5FF;
-  --bg:#ECF0F7; --sur:#FFFFFF; --brd:#E0E8F0;
+  --bg:#F1F4F9; --sur:#FFFFFF; --brd:#E4EAF2;
   --txt:#151E2E; --txt2:#526070; --txt3:#8FA3B5;
   --grad:linear-gradient(140deg,#1A3F6E 0%,#2579C6 100%);
-  --sh:0 2px 8px rgba(21,30,46,.06),0 0 0 1px rgba(21,30,46,.04);
-  --sh2:0 8px 32px rgba(21,30,46,.1),0 2px 8px rgba(21,30,46,.05);
-  --sh3:0 20px 60px rgba(21,30,46,.14),0 4px 12px rgba(21,30,46,.06);
+  --sh:0 1px 2px rgba(21,30,46,.04),0 4px 20px rgba(21,30,46,.07);
+  --sh2:0 2px 8px rgba(21,30,46,.05),0 12px 40px rgba(21,30,46,.10);
+  --sh3:0 4px 16px rgba(21,30,46,.07),0 24px 64px rgba(21,30,46,.13);
   --r:12px; --r2:18px; --r3:24px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -143,7 +143,7 @@ body{background:var(--bg);color:var(--txt)}
 
 .dash-top{height:64px;background:var(--sur);display:flex;align-items:center;
   padding:0 32px;gap:16px;flex-shrink:0;position:sticky;top:0;z-index:200;
-  border-bottom:1px solid var(--brd);box-shadow:0 1px 0 rgba(21,30,46,.06)}
+  box-shadow:0 1px 12px rgba(21,30,46,.07)}
 .dash-top .dt-logo{font-size:16px;font-weight:800;color:var(--blue-d);letter-spacing:-.4px}
 .dash-top .dt-logo span{color:var(--blue)}
 .dash-top .dt-user{margin-left:auto;display:flex;align-items:center;gap:12px}
@@ -156,9 +156,10 @@ body{background:var(--bg);color:var(--txt)}
 
 .dash-body{display:flex;flex:1;min-height:0}
 
-.dash-side{width:228px;background:var(--sur);border-right:1px solid var(--brd);
+.dash-side{width:228px;background:var(--sur);
   flex-shrink:0;display:flex;flex-direction:column;padding:20px 12px;
-  position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto}
+  position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;
+  box-shadow:1px 0 16px rgba(21,30,46,.06)}
 .ds-section{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;
   letter-spacing:.8px;padding:0 10px;margin-bottom:4px;margin-top:18px}
 .ds-section:first-child{margin-top:4px}
@@ -181,7 +182,7 @@ body{background:var(--bg);color:var(--txt)}
 .pg-hdr .ph-ttl{font-size:22px;font-weight:800;color:var(--txt);letter-spacing:-.3px;margin-bottom:4px}
 .pg-hdr .ph-sub{font-size:14px;color:var(--txt2)}
 
-.card{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r2);
+.card{background:var(--sur);border-radius:var(--r2);
   padding:20px;box-shadow:var(--sh)}
 .card+.card{margin-top:12px}
 .card .c-ttl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
@@ -196,7 +197,7 @@ body{background:var(--bg);color:var(--txt)}
 .g23{display:grid;grid-template-columns:2fr 1fr;gap:20px}
 
 /* stat box */
-.stat{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r2);
+.stat{background:var(--sur);border-radius:var(--r2);
   padding:20px 20px 16px;box-shadow:var(--sh)}
 .stat .sv{font-size:36px;font-weight:800;line-height:1;margin-bottom:4px}
 .stat .sl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--txt2)}
@@ -223,9 +224,9 @@ body{background:var(--bg);color:var(--txt)}
 
 /* rekom list */
 .rk-list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
-.rk-item{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r2);
+.rk-item{background:var(--sur);border-radius:var(--r2);box-shadow:var(--sh);
   padding:18px;cursor:pointer;transition:all .15s}
-.rk-item:hover{border-color:var(--blue);background:var(--blue-l)}
+.rk-item:hover{box-shadow:var(--sh2);background:var(--blue-l);transform:translateY(-2px)}
 .rk-item .ri-rank{font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
 .rk-item .ri-name{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:4px}
 .rk-item .ri-camps{font-size:12px;color:var(--txt2);margin-bottom:12px}
@@ -283,7 +284,7 @@ body{background:var(--bg);color:var(--txt)}
 
 /* section header */
 .sec-hdr{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding:16px 20px;
-  background:var(--sur);border-radius:var(--r2);border:1px solid var(--brd);box-shadow:var(--sh)}
+  background:var(--sur);border-radius:var(--r2);box-shadow:var(--sh)}
 .sh-icon{font-size:22px;flex-shrink:0}
 .sh-title{font-size:18px;font-weight:800;color:var(--txt);letter-spacing:-.2px}
 .sh-sub{font-size:13px;color:var(--txt2);margin-top:2px}
